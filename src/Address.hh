@@ -38,8 +38,8 @@ private:
     string streetAddressLine1;
     string streetAddressLine2;
     string city;
-    String state;
-    int zipCode;
+    string state;
+    string zipCode;
 
     /* Private Methods */
 
@@ -48,8 +48,10 @@ public:
 
     /* Public Methods */
     Address();
-    Address(string streetAddressLine1, string streetAddressLine2, string city, string state, int zipCode);
+    Address(string streetAddressLine1, string streetAddressLine2, string city, string state, string zipCode);
     ~Address();
+
+    string toString();
 };
 
 #endif

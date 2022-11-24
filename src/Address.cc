@@ -29,7 +29,7 @@ typedef string String;
 
 #define PROGRAM "libobjs"
 
-Address::Address(string streetAddressLine1, string streetAddressLine2, string city, string state, int zipCode) {
+Address::Address(string streetAddressLine1, string streetAddressLine2, string city, string state, string zipCode) {
     this->streetAddressLine1 = streetAddressLine1;
     this->streetAddressLine2 = streetAddressLine2;
     this->city = city;
@@ -38,6 +38,11 @@ Address::Address(string streetAddressLine1, string streetAddressLine2, string ci
 }
 
 Address::Address() {
+    this->streetAddressLine1 = "";
+    this->streetAddressLine2 = "";
+    this->city = "";
+    this->state = "";
+    this->zipCode = "";
 }
 
 /**
@@ -68,4 +73,20 @@ Address& Address::operator=(const Address& address) {
 
 
 
+string Address::toString() {
 
+    string retString = "";
+
+    retString += "; LINE1 = ";
+    retString += this->streetAddressLine1;
+    retString += "; LINE2 = ";
+    retString += this->streetAddressLine2;
+    retString += "; CITY = ";
+    retString += this->city;
+    retString += "; STATE = ";
+    retString += this->state;
+    retString += "; ZIP = ";
+    retString += this->zipCode;
+    
+    return(retString);
+}

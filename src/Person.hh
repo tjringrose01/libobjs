@@ -26,7 +26,7 @@
 
 #include <string>
 #include "Address.hh"
-//#include "PhoneNumber.hh"
+#include "PhoneNumber.hh"
 //#include "EmailAddress.hh"
 //#include "SSN.hh"
 
@@ -37,13 +37,14 @@ private:
     /* Private Members */
     string firstName;
     string lastName;
+    string middleName;
 
     Address address;
 
-    //PhoneNumber phoneNumber
+    PhoneNumber phoneNumber;
 
-    // isMale?
-    bool hasYChromosome;
+    // sex - 0=male; 1=female
+    int sex;
 
     //email address
 
@@ -59,8 +60,11 @@ public:
 
     /* Public Methods */
     Person();
+    Person(string firstName, string middleName, string lastName, Address address, PhoneNumber phoneNumber, int sex);
     ~Person();
-    //String toString();
+    String toString();
+
+    String getSexLabel();
 
     //CursedMenu& operator=(const CursedMenu& cm);
 };

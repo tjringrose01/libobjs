@@ -22,6 +22,7 @@
  */
 
 #include <string>
+#include <iostream>
 #include "Address.hh"
 
 using namespace std;
@@ -51,42 +52,74 @@ Address::Address() {
 Address::~Address() {
 }
 
-/**
-Address& Address::operator=(const Address& address) {
-    if (this != &address) // make sure not same object
-    {
-        //menuName = cm.menuName;
-        //menuTitle = cm.menuTitle;
-        //foreMenuColor = cm.foreMenuColor;
-        //backMenuColor = cm.backMenuColor;
-        //debugFlag = cm.debugFlag;
-
-        //menuItems.clear();
-        //for (int x=0; x < cm.menuItems.size(); x++)
-        //{
-            //menuItems.push_back(cm.menuItems.at(x));
-        //}
-    }
-    return *this;    // Return ref for multiple assignment
-}
-*/
-
-
-
 string Address::toString() {
 
     string retString = "";
 
-    retString += "; LINE1 = ";
     retString += this->streetAddressLine1;
-    retString += "; LINE2 = ";
-    retString += this->streetAddressLine2;
-    retString += "; CITY = ";
+    retString += ", ";
+
+    if (this->streetAddressLine2.length() > 0) {
+        retString += this->streetAddressLine2;
+        retString += ", ";
+    }
+
     retString += this->city;
-    retString += "; STATE = ";
+    retString += ", ";
     retString += this->state;
-    retString += "; ZIP = ";
+    retString += ", ";
     retString += this->zipCode;
     
     return(retString);
 }
+
+void Address::set_streetAddressLine1(string streetAddressLine1) {
+    this->streetAddressLine1 = streetAddressLine1;
+}
+
+void Address::set_streetAddressLine2(string streetAddressLine2) {
+    this->streetAddressLine2 = streetAddressLine2;
+}
+
+void Address::set_city(string city) {
+    this->city = city;
+}
+
+void Address::set_state(string state) {
+    this->state = state;
+}
+
+void Address::set_zipCode(string zipCode) {
+    this->zipCode = zipCode;
+}
+
+string Address::get_streetAddressLine1() {
+    return(this->streetAddressLine1);
+}
+
+string Address::get_streetAddressLine2() {
+    return(this->streetAddressLine2);
+}
+
+string Address::get_city() {
+    return(this->city);
+}
+
+string Address::get_state() {
+    return(this->state);
+}
+
+string Address::get_zipCode() {
+    return(this->zipCode);
+}
+
+/*
+Address Address::operator=(const Address address) {
+    //if (this != address) // make sure not same object
+    //{
+        Address tmp = Address(address.streetAddressLine1, address.streetAddressLine2, address.city, address.state, address.zipCode);
+    //}
+    //return this;    // Return ref for multiple assignment
+    return(tmp);
+}
+*/

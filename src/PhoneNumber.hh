@@ -1,6 +1,6 @@
 /**
- *  Address.hh - Address Class Definition - This class is responsible
- *              for defining a person. 
+ *  PhoneNumber.hh - PhoneNumber Class Definition - This class is responsible
+ *                   for defining a person. 
  *
  *  Copyright 2022 Timothy Ringrose
  *
@@ -21,8 +21,8 @@
  *
  */
 
-#ifndef __Address__
-#define __Address__
+#ifndef __PhoneNumber__
+#define __PhoneNumber__
 
 #include <stdlib.h>
 #include <string>
@@ -32,14 +32,13 @@ using namespace std;
 
 typedef string String;
 
-class Address {
+class PhoneNumber {
 private:
     /* Private Members */
-    string streetAddressLine1;
-    string streetAddressLine2;
-    string city;
-    string state;
-    string zipCode;
+    string countryCode;
+    string areaCode;
+    string telephonePrefix;
+    string lineNumber;
 
     /* Private Methods */
 
@@ -47,25 +46,22 @@ public:
     /* Public Members */
 
     /* Public Methods */
-    Address();
-    Address(string streetAddressLine1, string streetAddressLine2, string city, string state, string zipCode);
-    ~Address();
+    PhoneNumber();
+    PhoneNumber(string countryCode, string areaCode, string telephonePrefix, string lineNumber);
+    ~PhoneNumber();
 
     string toString();
 
-    void set_streetAddressLine1(string streetAddressLine1);
-    void set_streetAddressLine2(string streetAddressLine2);
-    void set_city(string city);
-    void set_state(string state);
-    void set_zipCode(string zipCode);
+    void set_countryCode(string countryCode);
+    void set_areaCode(string areaCode);
+    void set_telephonePrefix(string telephonePrefix);
+    void set_lineNumber(string lineNumber);
 
-    string get_streetAddressLine1();
-    string get_streetAddressLine2();
-    string get_city();
-    string get_state();
-    string get_zipCode();
+    string get_countryCode();
+    string get_areaCode();
+    string get_telephonePrefix();
+    string get_lineNumber();
     
-    //Address operator=(const Address address);
 };
 
 #endif

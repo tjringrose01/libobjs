@@ -1,6 +1,6 @@
 /**
- *  Person.hh - Person Class Definition - This class is responsible
- *              for defining a person. 
+ *  SSN.hh - SSN Class Definition - This class is responsible
+ *           for defining a Social Security Number. 
  *
  *  Copyright 2022 Timothy Ringrose
  *
@@ -21,36 +21,21 @@
  *
  */
 
-#ifndef __Person__
-#define __Person__
+#ifndef __SSN__
+#define __SSN__
 
 #include <string>
-#include "Address.hh"
-#include "PhoneNumber.hh"
-//#include "EmailAddress.hh"
-#include "SSN.hh"
 
 using namespace std;
 
-class Person {
+typedef string String;
+
+class SSN {
 private:
     /* Private Members */
-    string firstName;
-    string lastName;
-    string middleName;
-
-    Address address;
-
-    PhoneNumber phoneNumber;
-
-    // sex - 0=male; 1=female
-    int sex;
-
-    //email address
-
-    //date birthdate
-
-    SSN ssn;
+    string areaNo;
+    string groupNo;
+    string serialNo;
 
     /* Private Methods */
 
@@ -58,14 +43,19 @@ public:
     /* Public Members */
 
     /* Public Methods */
-    Person();
-    Person(string firstName, string middleName, string lastName, Address address, PhoneNumber phoneNumber, int sex, SSN ssn);
-    ~Person();
-    String toString();
+    SSN();
+    SSN(string areaNo, string groupNo, string serialNo);
+    ~SSN();
 
-    String getSexLabel();
+    string toString();
 
-    //CursedMenu& operator=(const CursedMenu& cm);
+    void set_areaNo(string areaNo);
+    void set_groupNo(string groupNo);
+    void set_serialNo(string serialNo);
+
+    string get_areaNo();
+    string get_groupNo();
+    string get_serialNo();
 };
 
 #endif

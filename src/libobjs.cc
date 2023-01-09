@@ -2,6 +2,7 @@
 #include "Address.hh"
 #include "PhoneNumber.hh"
 #include "Person.hh"
+#include "SSN.hh"
 
 using namespace std;
 
@@ -21,7 +22,11 @@ int main(int argc, char** argv) {
 
     cout << pn.toString() << endl;
 
-    Person per = Person("John", "Adams", "Smith", address, pn, 0);
+    SSN ssn = SSN("123","45","6789");
+
+    cout << ssn.toString() << endl;
+
+    Person per = Person("John", "Adams", "Smith", address, pn, 0, ssn);
 
     cout << per.toString() << endl;
 

@@ -1,6 +1,6 @@
 /**
- *  Person.hh - Person Class Definition - This class is responsible
- *              for defining a person. 
+ *  CurrencyAmount.hh - SSN Class Definition - This class is responsible
+ *                      for defining a currency amount.
  *
  *  Copyright 2022 Timothy Ringrose
  *
@@ -21,36 +21,20 @@
  *
  */
 
-#ifndef __Person__
-#define __Person__
+#ifndef __CurrencyAmount__
+#define __CurrencyAmount__
 
 #include <string>
-#include "Address.hh"
-#include "PhoneNumber.hh"
-//#include "EmailAddress.hh"
-#include "SSN.hh"
 
 using namespace std;
 
-class Person {
+typedef string String;
+
+class CurrencyAmount {
 private:
     /* Private Members */
-    string firstName;
-    string lastName;
-    string middleName;
-
-    Address address;
-
-    PhoneNumber phoneNumber;
-
-    // sex - 0=male; 1=female
-    int sex;
-
-    //email address
-
-    //date birthdate
-
-    SSN ssn;
+    string symbol;
+    string amount;
 
     /* Private Methods */
 
@@ -58,14 +42,17 @@ public:
     /* Public Members */
 
     /* Public Methods */
-    Person();
-    Person(string firstName, string middleName, string lastName, Address address, PhoneNumber phoneNumber, int sex, SSN ssn);
-    ~Person();
-    String toString();
+    CurrencyAmount();
+    CurrencyAmount(string symbol, string amount);
+    ~CurrencyAmount();
 
-    String getSexLabel();
+    string toString();
 
-    //CursedMenu& operator=(const CursedMenu& cm);
+    void set_symbol(string symbol);
+    void set_amount(string amount);
+
+    string get_symbol();
+    string get_amount();
 };
 
 #endif

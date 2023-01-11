@@ -24,7 +24,15 @@ int main(int argc, char** argv) {
 
     SSN ssn = SSN("123","45","6789");
 
-    cout << ssn.toString() << endl;
+    //cout << ssn.toString() << endl;
+
+    try {
+        //SSN ssn = SSN("000","00","0000");
+    } catch (const char* msg) {
+        //cerr << msg << endl;
+    }
+
+    //cout << ssn.toString() << endl;
 
     Person per = Person("John", "Adams", "Smith", address, pn, 0, ssn);
 

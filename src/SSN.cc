@@ -86,7 +86,7 @@ using namespace std;
 
 #define MIN_GROUP 01
 #define MAX_GROUP 99
-`
+
 #define MIN_SERIAL 0001
 #define MAX_SERIAL 9999
 
@@ -125,27 +125,43 @@ string SSN::toString() {
 void SSN::set_areaNo(string areaNo) {
     bool isValid = false;
 
-    if (static_cast<int>(areaNo) < MIN_AREA1) && (static_cast<int>(areaNo) > MAX_AREA1)
-        isValue = true;
+    if (atoi(areaNo.c_str()) >= MIN_AREA1 && atoi(areaNo.c_str()) <= MAX_AREA1)
+        isValid = true;
 
-    if (static_cast<int>(areaNo) < MIN_AREA2) && ((static_cast<int>(areaNo) > MAX_AREA2)
-        isValue = true;
+    if (atoi(areaNo.c_str()) >= MIN_AREA2 && atoi(areaNo.c_str()) <= MAX_AREA2)
+        isValid = true;
 
-    if (static_cast<int>(areaNo) < MIN_AREA3) && (static_cast<int>(areaNo) > MAX_AREA3)
-        isValue = true;
+    if (atoi(areaNo.c_str()) >= MIN_AREA3 && atoi(areaNo.c_str()) <= MAX_AREA3)
+        isValid = true;
 
     if ( isValid )
         this->areaNo = areaNo;
     else
-        throw std::invalid_argument( "received invalid value" );
+        throw std::invalid_argument( "ERROR: received invalid value for areaNo" );
 }
 
 void SSN::set_groupNo(string groupNo) {
-    this->groupNo = groupNo;
+    bool isValid = false;
+
+    if (atoi(groupNo.c_str()) >= MIN_GROUP && atoi(groupNo.c_str()) <= MAX_GROUP)
+        isValid = true;
+
+    if ( isValid )
+        this->groupNo = groupNo;
+    else
+        throw std::invalid_argument( "ERROR: received invalid value for groupNo" );
 }
 
 void SSN::set_serialNo(string serialNo) {
-    this->serialNo = serialNo;
+    bool isValid = false;
+
+    if (atoi(serialNo.c_str()) >= MIN_SERIAL && atoi(serialNo.c_str()) <= MAX_SERIAL)
+        isValid = true;
+
+    if ( isValid )
+        this->serialNo = serialNo;
+    else
+        throw std::invalid_argument( "ERROR: received invalid value for serialNo" );
 }
 
 string SSN::get_areaNo() {

@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include "Address.hh"
 #include "PhoneNumber.hh"
 #include "Person.hh"
@@ -27,9 +28,9 @@ int main(int argc, char** argv) {
     //cout << ssn.toString() << endl;
 
     try {
-        //SSN ssn = SSN("000","00","0000");
-    } catch (const char* msg) {
-        //cerr << msg << endl;
+        SSN ssn2 = SSN("000","00","0000");
+    } catch (exception& exc) {
+        cerr << "ERROR: Unable to assign SSN." << endl;
     }
 
     //cout << ssn.toString() << endl;

@@ -4,6 +4,7 @@
 #include "PhoneNumber.hh"
 #include "Person.hh"
 #include "SSN.hh"
+#include "DateTime.hh"
 
 using namespace std;
 
@@ -38,6 +39,10 @@ int main(int argc, char** argv) {
     Person per = Person("John", "Adams", "Smith", address, pn, 0, ssn);
 
     cout << per.toString() << endl;
+
+    DateTime date = DateTime();
+
+    cout << date.toString() << endl;
 
     return 0;
 }

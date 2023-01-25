@@ -30,20 +30,38 @@ using namespace std;
 using namespace std::chrono;
 
 #define PROGRAM "libobjs"
+#define EPOCH_YEAR 1970
 
 DateTime::DateTime() {
-    this->epoch = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+    this->epoch_ms = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
 }
 
 DateTime::~DateTime() {
 }
 
+unsigned long DateTime::getEpoch_ms() {
+    return(this->epoch_ms);
+}
+
+unsigned long DateTime::getEpoch() {
+    return(this->epoch_ms / 1000);
+}
+
+/**
+ * epochmonth = ((current year number - 1970 - 1) * 12) + current month number
+ */
 int DateTime::getMonth() {
+    ( ( getYear() - 1970 - 1 ) * 12 ) 
+
+
     return(0);
 }
 
+/**
+ * seconds / 60 / 60 / 24 / 365 + 1970
+ */
 int DateTime::getYear() {
-    uint64_t year = epoch / 1000 / 60 / 60 / 24 ;
+    int year = EPOCH_YEAR + getEpoch() / 60 / 60 / 24 / 365 ;
     return(year);
 }
 
@@ -55,9 +73,12 @@ string DateTime::toString() {
 
     retString += "";
 
-    cout << epoch << " milliseconds since the Epoch\n";
+    cout << getEpoch_ms() << " milliseconds since the Epoch\n";
+    cout << getEpoch() << " seconds since the Epoch\n";
 
     cout << "Year: " << getYear() << endl;
+
+    cout << "Month: " << getMonth() << endl;
 
     return(retString);
 }

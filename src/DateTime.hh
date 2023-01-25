@@ -32,7 +32,7 @@ using namespace std;
 class DateTime {
 private:
     /* Private Members */
-    uint64_t epoch;
+    unsigned long epoch_ms;
 
     /* Private Methods */
 
@@ -40,6 +40,8 @@ public:
     /* Public Members */
 
     /* Public Methods */
+    unsigned long getEpoch_ms();
+    unsigned long getEpoch();
     int getMonth();
     int getYear();
     DateTime();

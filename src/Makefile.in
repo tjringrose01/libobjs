@@ -100,7 +100,8 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_libobjs_OBJECTS = libobjs.$(OBJEXT) Person.$(OBJEXT) \
-	Address.$(OBJEXT) PhoneNumber.$(OBJEXT) SSN.$(OBJEXT)
+	Address.$(OBJEXT) PhoneNumber.$(OBJEXT) SSN.$(OBJEXT) \
+	DateTime.$(OBJEXT)
 libobjs_OBJECTS = $(am_libobjs_OBJECTS)
 libobjs_DEPENDENCIES =
 AM_V_P = $(am__v_P_@AM_V@)
@@ -118,9 +119,9 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/Address.Po ./$(DEPDIR)/Person.Po \
-	./$(DEPDIR)/PhoneNumber.Po ./$(DEPDIR)/SSN.Po \
-	./$(DEPDIR)/libobjs.Po
+am__depfiles_remade = ./$(DEPDIR)/Address.Po ./$(DEPDIR)/DateTime.Po \
+	./$(DEPDIR)/Person.Po ./$(DEPDIR)/PhoneNumber.Po \
+	./$(DEPDIR)/SSN.Po ./$(DEPDIR)/libobjs.Po
 am__mv = mv -f
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
@@ -313,7 +314,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-libobjs_SOURCES = libobjs.cc Person.cc Person.hh Address.cc Address.hh PhoneNumber.cc PhoneNumber.hh SSN.hh SSN.cc
+libobjs_SOURCES = libobjs.cc Person.cc Person.hh Address.cc Address.hh PhoneNumber.cc PhoneNumber.hh SSN.hh SSN.cc DateTime.hh DateTime.cc
 SUBDIRS = 
 libobjs_LDADD = 
 all: config.h
@@ -419,6 +420,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Address.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DateTime.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Person.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PhoneNumber.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SSN.Po@am__quote@ # am--include-marker
@@ -645,6 +647,7 @@ clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
 
 distclean: distclean-recursive
 		-rm -f ./$(DEPDIR)/Address.Po
+	-rm -f ./$(DEPDIR)/DateTime.Po
 	-rm -f ./$(DEPDIR)/Person.Po
 	-rm -f ./$(DEPDIR)/PhoneNumber.Po
 	-rm -f ./$(DEPDIR)/SSN.Po
@@ -695,6 +698,7 @@ installcheck-am:
 
 maintainer-clean: maintainer-clean-recursive
 		-rm -f ./$(DEPDIR)/Address.Po
+	-rm -f ./$(DEPDIR)/DateTime.Po
 	-rm -f ./$(DEPDIR)/Person.Po
 	-rm -f ./$(DEPDIR)/PhoneNumber.Po
 	-rm -f ./$(DEPDIR)/SSN.Po

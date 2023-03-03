@@ -42,6 +42,10 @@ public:
     /* Public Methods */
     unsigned long getEpoch_ms();
     unsigned long getEpoch();
+    int getSecond();
+    int getMinute();
+    int getHour();
+    int getDay();
     int getMonth();
     int getYear();
     DateTime();

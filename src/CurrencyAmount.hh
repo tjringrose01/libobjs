@@ -1,5 +1,5 @@
 /**
- *  CurrencyAmount.hh - SSN Class Definition - This class is responsible
+ *  CurrencyAmount.hh - Currency Class Definition - This class is responsible
  *                      for defining a currency amount.
  *
  *  Copyright 2022 Timothy Ringrose
@@ -21,38 +21,43 @@
  *
  */
 
-#ifndef __CurrencyAmount__
-#define __CurrencyAmount__
+#ifndef CURRENCY_AMOUNT_H
+#define CURRENCY_AMOUNT_H
 
 #include <string>
 
-using namespace std;
-
-typedef string String;
-
 class CurrencyAmount {
-private:
-    /* Private Members */
-    string symbol;
-    string amount;
-
-    /* Private Methods */
-
 public:
-    /* Public Members */
+    // Constructor that takes in the currency code and amount
+    CurrencyAmount(const std::string& currency_code, double amount);
 
-    /* Public Methods */
-    CurrencyAmount();
-    CurrencyAmount(string symbol, string amount);
-    ~CurrencyAmount();
+    // Getter functions for the currency code and amount
+    std::string getCurrencyCode() const;
+    double getAmount() const;
 
-    string toString();
+    // Setter functions for the currency code and amount
+    void setCurrencyCode(const std::string& currency_code);
+    void setAmount(double amount);
 
-    void set_symbol(string symbol);
-    void set_amount(string amount);
+    // Function to convert the currency amount to a string
+    std::string toString() const;
 
-    string get_symbol();
-    string get_amount();
+    // Overloaded operators for addition and subtraction
+    CurrencyAmount operator+(const CurrencyAmount& other) const;
+    CurrencyAmount operator-(const CurrencyAmount& other) const;
+
+    // Overloaded comparison operators
+    bool operator==(const CurrencyAmount& other) const;
+    bool operator!=(const CurrencyAmount& other) const;
+    bool operator<(const CurrencyAmount& other) const;
+    bool operator<=(const CurrencyAmount& other) const;
+    bool operator>(const CurrencyAmount& other) const;
+    bool operator>=(const CurrencyAmount& other) const;
+
+private:
+    // Member variables for the currency code and amount
+    std::string currency_code_;
+    double amount_;
 };
 
 #endif

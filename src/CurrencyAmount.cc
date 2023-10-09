@@ -24,6 +24,7 @@
 #include "CurrencyAmount.hh"
 #include <sstream>
 #include <iomanip>
+#include <cmath>
 
 CurrencyAmount::CurrencyAmount(const std::string& currency_code, double amount)
     : currency_code_(currency_code), amount_(amount) {}
@@ -42,6 +43,18 @@ void CurrencyAmount::setCurrencyCode(const std::string& currency_code) {
 
 void CurrencyAmount::setAmount(double amount) {
     amount_ = amount;
+}
+
+// Get tax from the amount
+double CurrencyAmount::getTax(double tax) {
+	double _tax = ceil(this->amount_ * tax * 100 ) / 100;
+	return _tax;
+}
+
+// Add tax to the amount
+void CurrencyAmount::addTax(double tax) {
+	double _tax = (this->amount_ * tax) + .005;
+	this->amount_ += _tax;
 }
 
 std::string CurrencyAmount::toString() const {

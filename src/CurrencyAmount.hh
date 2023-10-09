@@ -39,6 +39,12 @@ public:
     void setCurrencyCode(const std::string& currency_code);
     void setAmount(double amount);
 
+    // Adds Tax to the CurrencyAmount
+    void addTax(double tax);
+
+    // Return Tax amount from the CurrencyAmount
+    double getTax(double tax);
+
     // Function to convert the currency amount to a string
     std::string toString() const;
 

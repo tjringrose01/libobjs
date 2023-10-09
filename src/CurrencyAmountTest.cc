@@ -1,5 +1,8 @@
-#include "CurrencyAmount.h"
+#include "CurrencyAmount.hh"
 #include <cassert>
+#include <iostream>
+
+//using namespace std;
 
 class CurrencyAmountTest {
 public:
@@ -68,6 +71,19 @@ public:
             assert(true);
         }
     }
+
+    void testTax() {
+	CurrencyAmount correctAmt("USD", 11.24);
+	double correctTaxAmt = .74;
+	double taxAmt = .07;
+        CurrencyAmount amount1("USD", 10.50);
+	std::cout << amount1.toString() << std::endl;
+	assert(correctTaxAmt == amount1.getTax(.07));
+	std::cout << amount1.getTax(.07) << std::endl;
+	amount1.addTax(taxAmt);
+	std::cout << amount1.toString() << std::endl;
+	assert(amount1 == correctAmt);
+    }
 };
 
 int main() {
@@ -76,5 +92,6 @@ int main() {
     test.testSubtraction();
     test.testEquality();
     test.testComparison();
+    test.testTax();
     return 0;
 }

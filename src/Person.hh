@@ -25,11 +25,11 @@
 #define __Person__
 
 #include <string>
+#include "Dt.hh"
 #include "Address.hh"
 #include "PhoneNumber.hh"
 //#include "EmailAddress.hh"
 #include "SSN.hh"
-
 using namespace std;
 
 class Person {
@@ -48,7 +48,7 @@ private:
 
     //email address
 
-    //date birthdate
+    //Dt birthdate;
 
     SSN ssn;
 

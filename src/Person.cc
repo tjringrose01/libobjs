@@ -24,6 +24,7 @@
 
 #include <string>
 #include "Person.hh"
+#include "Dt.hh"
 
 using namespace std;
 typedef string String;
@@ -41,6 +42,7 @@ Person::Person(string firstName, string middleName, string lastName, Address add
     this->phoneNumber = phoneNumber;
     this->sex = sex;
     this->ssn = ssn;
+    //this->birthDate = Date(1900,1,1);
 }
 
 Person::~Person() {
@@ -64,7 +66,9 @@ String Person::toString() {
     retString += "; ";
     retString += address.toString();
     retString += "; ";
-    retString += phoneNumber.toString();;
+    retString += phoneNumber.toString();
+    //retString += "; ";
+    //retString += birthDate.toString();
 
     return(retString);
 }

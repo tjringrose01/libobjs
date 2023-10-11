@@ -34,15 +34,15 @@ typedef string String;
 Person::Person() {
 }
 
-Person::Person(string firstName, string middleName, string lastName, Address address, PhoneNumber phoneNumber, int sex, SSN ssn) {
+Person::Person(string firstName, string middleName, string lastName, Address address, PhoneNumber phoneNumber, int sex, Dt birthdate, SSN ssn) {
     this->firstName = firstName;
     this->middleName = middleName;
     this->lastName = lastName;
     this->address = address;
     this->phoneNumber = phoneNumber;
     this->sex = sex;
+    this->birthdate = birthdate;
     this->ssn = ssn;
-    //this->birthDate = Date(1900,1,1);
 }
 
 Person::~Person() {
@@ -67,8 +67,8 @@ String Person::toString() {
     retString += address.toString();
     retString += "; ";
     retString += phoneNumber.toString();
-    //retString += "; ";
-    //retString += birthDate.toString();
+    retString += "; ";
+    retString += birthdate.toString();
 
     return(retString);
 }

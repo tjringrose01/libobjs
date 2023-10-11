@@ -23,6 +23,8 @@ int main(int argc, char** argv) {
 
     cout << pn.toString() << endl;
 
+    Dt birthDate = Dt(1980,12,14);
+
     SSN ssn = SSN("123","45","6789");
 
     //cout << ssn.toString() << endl;
@@ -35,7 +37,7 @@ int main(int argc, char** argv) {
 
     //cout << ssn.toString() << endl;
 
-    Person per = Person("John", "Adams", "Smith", address, pn, 0, ssn);
+    Person per = Person("John", "Adams", "Smith", address, pn, 0, birthDate, ssn);
 
     cout << per.toString() << endl;
 

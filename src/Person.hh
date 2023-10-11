@@ -48,7 +48,7 @@ private:
 
     //email address
 
-    //Dt birthdate;
+    Dt birthdate;
 
     SSN ssn;
 
@@ -59,7 +59,7 @@ public:
 
     /* Public Methods */
     Person();
-    Person(string firstName, string middleName, string lastName, Address address, PhoneNumber phoneNumber, int sex, SSN ssn);
+    Person(string firstName, string middleName, string lastName, Address address, PhoneNumber phoneNumber, int sex, Dt birthdate, SSN ssn);
     ~Person();
     String toString();
 

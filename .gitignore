@@ -43,4 +43,7 @@ config.log
 config.status
 
 src/Makefile
+src/Makefile.in
 src/libobjs
+src/dates
+src/CurrencyAmountTest

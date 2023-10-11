@@ -47,3 +47,4 @@ src/Makefile.in
 src/libobjs
 src/dates
 src/CurrencyAmountTest
+src/stamp-h1

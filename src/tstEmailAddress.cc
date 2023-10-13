@@ -24,7 +24,7 @@ int main(int argc, char** argv) {
 			
 			try {
 				EmailAddress email(address);
-				printf("%-64s %s\r\n", address.c_str(),"[Good]");
+				printf("%-64s %s\r\n", email.toString().c_str(),"[Good]");
 			} catch (exception& exc) {
 				printf("%-64s %s\r\n", address.c_str(),"[Bad]");
 			}

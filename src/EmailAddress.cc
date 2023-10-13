@@ -84,23 +84,28 @@ void EmailAddress::set_name(string email) {
 	//Parse out name from emailAddress
 	int n = email.find("@");
 
-	/*
-	if ( n > 0 )
+	if ( n == string::npos )
 		throw std::invalid_argument( "ERROR: received invalid value for email" );
-	*/
+
+	if ( email.substr(0,n).length() == 0 )
+		throw std::invalid_argument( "ERROR: received invalid value for email" );
 
 	this->name = email.substr(0,n);
+
+	//cout << this->name << endl;
 }
 
 void EmailAddress::set_domain(string email) {
 	//Parse out domain from emailAddress
 	int n = email.find("@");
-/*
-	if ( n > 0 )
-		throw std::invalid_argument( "ERROR: received invalid value for email" );
-		*/
 
-	this->name = email.substr(n+1,email.length() - n);
+	if ( n == string::npos )
+		throw std::invalid_argument( "ERROR: received invalid value for email" );
+
+	if ( email.substr(n+1,email.length() - n).length() == 0 )
+		throw std::invalid_argument( "ERROR: received invalid value for email" );
+
+	this->domain = email.substr(n+1,email.length() - n);
 }
 
 string EmailAddress::get_name() {

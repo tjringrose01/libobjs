@@ -48,3 +48,4 @@ src/libobjs
 src/dates
 src/CurrencyAmountTest
 src/stamp-h1
+src/tstEmailAddress

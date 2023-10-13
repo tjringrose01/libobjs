@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "EmailAddress.hh"
 #include "Address.hh"
 #include "PhoneNumber.hh"
 #include "Person.hh"
@@ -27,6 +28,8 @@ int main(int argc, char** argv) {
 
     SSN ssn = SSN("123","45","6789");
 
+    EmailAddress email = EmailAddress("john@lala.com");
+
     //cout << ssn.toString() << endl;
 
     try {
@@ -37,7 +40,7 @@ int main(int argc, char** argv) {
 
     //cout << ssn.toString() << endl;
 
-    Person per = Person("John", "Adams", "Smith", address, pn, 0, birthDate, ssn);
+    Person per = Person("John", "Adams", "Smith", address, pn, 0, birthDate, ssn, email);
 
     cout << per.toString() << endl;
 

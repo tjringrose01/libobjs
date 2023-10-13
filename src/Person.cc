@@ -31,10 +31,7 @@ typedef string String;
 
 #define PROGRAM "libobjs"
 
-Person::Person() {
-}
-
-Person::Person(string firstName, string middleName, string lastName, Address address, PhoneNumber phoneNumber, int sex, Dt birthdate, SSN ssn) {
+Person::Person(string firstName, string middleName, string lastName, Address address, PhoneNumber phoneNumber, int sex, Dt birthdate, SSN ssn, EmailAddress email) {
     this->firstName = firstName;
     this->middleName = middleName;
     this->lastName = lastName;
@@ -43,8 +40,8 @@ Person::Person(string firstName, string middleName, string lastName, Address add
     this->sex = sex;
     this->birthdate = birthdate;
     this->ssn = ssn;
+    this->email = email;
 }
-
 Person::~Person() {
 }
 
@@ -69,6 +66,8 @@ String Person::toString() {
     retString += phoneNumber.toString();
     retString += "; ";
     retString += birthdate.toString();
+    retString += "; ";
+    retString += email.toString();
 
     return(retString);
 }

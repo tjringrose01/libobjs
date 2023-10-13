@@ -1,6 +1,6 @@
 /**
- *  Person.hh - Person Class Definition - This class is responsible
- *              for defining a person. 
+ *  EmailAddress.hh - EmailAddress Class Definition - This class is responsible
+ *                   for defining a person. 
  *
  *  Copyright 2022 Timothy Ringrose
  *
@@ -21,53 +21,42 @@
  *
  */
 
-#ifndef __Person__
-#define __Person__
+#ifndef __EmailAddress
+#define __EmailAddress
 
+#include <stdlib.h>
 #include <string>
-#include "Dt.hh"
-#include "Address.hh"
-#include "PhoneNumber.hh"
-#include "EmailAddress.hh"
-#include "SSN.hh"
+#include <iostream>
+#include <stdexcept>
+
 using namespace std;
 
-class Person {
+class EmailAddress {
 private:
     /* Private Members */
-    string firstName;
-    string lastName;
-    string middleName;
-
-    Address address;
-
-    PhoneNumber phoneNumber;
-
-    // sex - 0=male; 1=female
-    int sex;
-
-    //email address
-
-    Dt birthdate;
-
-    SSN ssn;
-
-    EmailAddress email;
+    string name;
+    string domain;
 
     /* Private Methods */
+    void set_name(string email);
+    void set_domain(string email);
 
 public:
     /* Public Members */
 
     /* Public Methods */
-    Person();
-    Person(string firstName, string middleName, string lastName, Address address, PhoneNumber phoneNumber, int sex, Dt birthdate, SSN ssn, EmailAddress email);
-    ~Person();
-    String toString();
+    EmailAddress(string email);
+    EmailAddress();
+    ~EmailAddress();
 
-    String getSexLabel();
+    string toString();
 
-    //CursedMenu& operator=(const CursedMenu& cm);
+    void set_emailAddress(string email);
+
+    string get_name();
+    string get_domain();
+    string get_emailAddress();
+    
 };
 
 #endif

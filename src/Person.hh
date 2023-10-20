@@ -2,7 +2,7 @@
  *  Person.hh - Person Class Definition - This class is responsible
  *              for defining a person. 
  *
- *  Copyright 2022 Timothy Ringrose
+ *  Copyright 2023 Timothy Ringrose
  *
  *  This file is part of libobjs.
  *
@@ -27,7 +27,7 @@
 #include <string>
 #include "Dt.hh"
 #include "Address.hh"
-#include "PhoneNumber.hh"
+#include "PhoneNumber.h"
 #include "EmailAddress.hh"
 #include "SSN.hh"
 using namespace std;

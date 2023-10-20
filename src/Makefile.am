@@ -1,6 +1,6 @@
 bin_PROGRAMS = libobjs CurrencyAmountTest dates tstEmailAddress
  
-libobjs_SOURCES = libobjs.cc Person.cc Person.hh Address.cc Address.hh PhoneNumber.cc PhoneNumber.hh SSN.hh SSN.cc Dt.hh Dt.cc EmailAddress.hh EmailAddress.cc
+libobjs_SOURCES = libobjs.cc Person.cc Person.hh Address.cc Address.hh PhoneNumber.cpp PhoneNumber.h SSN.hh SSN.cc Dt.hh Dt.cc EmailAddress.hh EmailAddress.cc
 
 CurrencyAmountTest_SOURCES = CurrencyAmountTest.cc CurrencyAmount.hh CurrencyAmount.cc
 

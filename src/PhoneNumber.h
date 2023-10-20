@@ -77,6 +77,9 @@ private:
     string areaCode_;
     string prefix_;
     string number_;
+
+    // Determine if string is all numeric characters
+    bool isNumber(const string& s) const;
 };
 
 #endif // PHONENUMBER_H

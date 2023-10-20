@@ -91,7 +91,7 @@ string PhoneNumber::toLocalFormat() const {
 }
 
 // Output in local format for the United States
-string PhoneNumber::toLocalFormat() const {
+string PhoneNumber::toString() const {
     return toLocalFormat();
 }
 
@@ -110,7 +110,20 @@ bool PhoneNumber::operator==(const PhoneNumber& other) const {
 
 // Helper function to validate a phone number part
 void PhoneNumber::validatePart(const string& part, const string& partName) const {
-    if (part.empty() || !all_of(part.begin(), part.end(), ::isdigit)) {
+    // Throw an exception if we are empty
+    if ( part.empty() ) {
         throw invalid_argument(partName + " is invalid.");
     }
+
+    // Throw an exception if we are not numeric
+    if ( ! isNumber(part) ) {
+        throw invalid_argument(partName + " is invalid.");
+    }
+}
+
+// Determine if string is all numeric characters
+bool PhoneNumber::isNumber(const string& s) const {
+    string::const_iterator it = s.begin();
+    while (it != s.end() && isdigit(*it)) ++it;
+    return !s.empty() && it == s.end();
 }

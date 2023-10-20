@@ -20,7 +20,7 @@ int main(int argc, char** argv) {
 
     cout << addr2.toString() << endl;
 
-    PhoneNumber pn = PhoneNumber("+1", "555", "555", "5555");
+    PhoneNumber pn = PhoneNumber("555", "555", "5555", "44");
 
     cout << pn.toString() << endl;
 

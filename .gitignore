@@ -49,3 +49,10 @@ src/dates
 src/CurrencyAmountTest
 src/stamp-h1
 src/tstEmailAddress
+
+CMakeCache.txt
+CMakeFiles/
+CPackConfig.cmake
+CPackSourceConfig.cmake
+cmake_install.cmake
+*.swp

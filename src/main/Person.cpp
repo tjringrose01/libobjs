@@ -23,8 +23,8 @@
  */
 
 #include <string>
-#include "Person.hh"
-#include "Dt.hh"
+#include "Person.h"
+#include "Dt.h"
 
 using namespace std;
 typedef string String;

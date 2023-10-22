@@ -1,8 +1,8 @@
 /**
- *  CurrencyAmount.hh - Currency Class Definition - This class is responsible
+ *  CurrencyAmount.h - Currency Class Definition - This class is responsible
  *                      for defining a currency amount.
  *
- *  Copyright 2022 Timothy Ringrose
+ *  Copyright 2023 Timothy Ringrose
  *
  *  This file is part of libobjs.
  *

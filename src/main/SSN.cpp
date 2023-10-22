@@ -66,7 +66,7 @@
 
 #include <string>
 #include <stdexcept>
-#include "SSN.hh"
+#include "SSN.h"
 
 using namespace std;
 

@@ -1,8 +1,8 @@
 /**
- *  Address.hh - Address Class Definition - This class is responsible
- *              for defining a person. 
+ *  EmailAddress.h - EmailAddress Class Definition - This class is responsible
+ *                   for defining a person. 
  *
- *  Copyright 2022 Timothy Ringrose
+ *  Copyright 2023 Timothy Ringrose
  *
  *  This file is part of libobjs.
  *
@@ -21,51 +21,42 @@
  *
  */
 
-#ifndef __Address__
-#define __Address__
+#ifndef __EmailAddress
+#define __EmailAddress
 
 #include <stdlib.h>
 #include <string>
 #include <iostream>
+#include <stdexcept>
 
 using namespace std;
 
-typedef string String;
-
-class Address {
+class EmailAddress {
 private:
     /* Private Members */
-    string streetAddressLine1;
-    string streetAddressLine2;
-    string city;
-    string state;
-    string zipCode;
+    string name;
+    string domain;
 
     /* Private Methods */
+    void set_name(string email);
+    void set_domain(string email);
 
 public:
     /* Public Members */
 
     /* Public Methods */
-    Address();
-    Address(string streetAddressLine1, string streetAddressLine2, string city, string state, string zipCode);
-    ~Address();
+    EmailAddress(string email);
+    EmailAddress();
+    ~EmailAddress();
 
     string toString();
 
-    void set_streetAddressLine1(string streetAddressLine1);
-    void set_streetAddressLine2(string streetAddressLine2);
-    void set_city(string city);
-    void set_state(string state);
-    void set_zipCode(string zipCode);
+    void set_emailAddress(string email);
 
-    string get_streetAddressLine1();
-    string get_streetAddressLine2();
-    string get_city();
-    string get_state();
-    string get_zipCode();
+    string get_name();
+    string get_domain();
+    string get_emailAddress();
     
-    //Address operator=(const Address address);
 };
 
 #endif

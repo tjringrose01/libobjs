@@ -22,7 +22,7 @@
  */
 
 #include <string>
-#include "Dt.hh"
+#include "Dt.h"
 
 using namespace std;
 

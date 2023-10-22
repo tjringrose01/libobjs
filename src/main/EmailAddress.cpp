@@ -23,7 +23,7 @@
 
 #include <string>
 #include <stdexcept>
-#include "EmailAddress.hh"
+#include "EmailAddress.h"
 
 using namespace std;
 

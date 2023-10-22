@@ -1,5 +1,5 @@
 /**
- *  Person.hh - Person Class Definition - This class is responsible
+ *  Person.h - Person Class Definition - This class is responsible
  *              for defining a person. 
  *
  *  Copyright 2023 Timothy Ringrose
@@ -25,11 +25,11 @@
 #define __Person__
 
 #include <string>
-#include "Dt.hh"
-#include "Address.hh"
+#include "Dt.h"
+#include "Address.h"
 #include "PhoneNumber.h"
-#include "EmailAddress.hh"
-#include "SSN.hh"
+#include "EmailAddress.h"
+#include "SSN.h"
 using namespace std;
 
 class Person {

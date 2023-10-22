@@ -1,8 +1,8 @@
 /**
- *  SSN.hh - SSN Class Definition - This class is responsible
+ *  SSN.h - SSN Class Definition - This class is responsible
  *           for defining a Social Security Number. 
  *
- *  Copyright 2022 Timothy Ringrose
+ *  Copyright 2023 Timothy Ringrose
  *
  *  This file is part of libobjs.
  *

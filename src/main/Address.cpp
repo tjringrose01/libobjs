@@ -2,7 +2,7 @@
  *  Address.cc - libobjs Class Implementation - This class is
  *               responsible for defining an address.
  *
- *  Copyright 2022 Timothy Ringrose
+ *  Copyright 2023 Timothy Ringrose
  *
  *  This file is part of libobjs.
  *
@@ -23,10 +23,9 @@
 
 #include <string>
 #include <iostream>
-#include "Address.hh"
+#include "Address.h"
 
 using namespace std;
-typedef string String;
 
 #define PROGRAM "libobjs"
 
@@ -38,13 +37,8 @@ Address::Address(string streetAddressLine1, string streetAddressLine2, string ci
     this->zipCode = zipCode;
 }
 
-Address::Address() {
-    this->streetAddressLine1 = "";
-    this->streetAddressLine2 = "";
-    this->city = "";
-    this->state = "";
-    this->zipCode = "";
-}
+//Default constructor
+Address::Address() = default;
 
 /**
  * Housekeeping

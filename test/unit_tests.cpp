@@ -29,7 +29,7 @@ using namespace std;
 TEST(PhoneNumberTest, Formatting) {
     PhoneNumber number1("1", "555", "123", "4567");
     PhoneNumber number2("1", "555", "123", "4567");
-    PhoneNumber number3("44", "20", "1234", "5678");
+    PhoneNumber number3("1", "555", "234", "5678");
 
     EXPECT_EQ("+15551234567", number1.toE164Format());
     EXPECT_EQ("(555) 123-4567", number1.toLocalFormat());
@@ -38,6 +38,7 @@ TEST(PhoneNumberTest, Formatting) {
     EXPECT_TRUE(number1 == number2);
     EXPECT_FALSE(number1 == number3);
 }
+
 
 // Test for invalid phone numbers
 TEST(PhoneNumberTest, InvalidPhoneNumber) {
@@ -50,6 +51,7 @@ TEST(PhoneNumberTest, InvalidPhoneNumber) {
     // Invalid part (non-numeric prefix)
     EXPECT_THROW(PhoneNumber("1", "555", "12a", "4567"), invalid_argument);
 }
+
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);

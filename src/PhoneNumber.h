@@ -38,7 +38,7 @@ public:
     PhoneNumber();
 
     // Constructor with default country code
-    PhoneNumber(const string& areaCode, const string& prefix, const string& number, const string& countryCode = "1");
+    PhoneNumber(const string& countryCode, const string& areaCode, const string& prefix, const string& number);
 
     // Getter methods
     string getCountryCode() const;

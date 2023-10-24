@@ -21,17 +21,17 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # add the data to the target, so it becomes visible in some IDE
-add_executable(libobjs ${sources} ${data})
+#add_executable(libobjs ${sources} ${data})
 
 # just for example add some compiler flags
-target_compile_options(libobjs PUBLIC -std=c++1y -Wall -Wfloat-conversion)
+#target_compile_options(libobjs PUBLIC -std=c++1y -Wall -Wfloat-conversion)
 
 # this lets me include files relative to the root source directory with a <> pair
-target_include_directories(libobjs PUBLIC src)
+#target_include_directories(libobjs PUBLIC src)
 
 # this copies all resource files in the build directory
 # we need this, because we want to work with paths relative to the executable
-file(COPY ${data} DESTINATION resources)
+file(COPY ${data} DESTINATION ${CMAKE_BINARY_DIR}/lib)
 
 ###############################################################################
 ## dependencies ###############################################################
@@ -64,15 +64,17 @@ if(GTEST_FOUND)
 
   # this allows us to use our executable as a link library
   # therefore we can inherit all compiler options and library dependencies
-  set_target_properties(example PROPERTIES ENABLE_EXPORTS on)
+  set_target_properties(unit_tests PROPERTIES ENABLE_EXPORTS on)
+
+  #target_include_directories(test PRIVATE ${YOUR_DIRECTORY})
 
   target_link_libraries(unit_tests PUBLIC
     ${GTEST_BOTH_LIBRARIES}
-    example
   )
 
   target_include_directories(unit_tests PUBLIC
     ${GTEST_INCLUDE_DIRS} # doesn't do anything on Linux
+    "../src"
   )
 endif()
 
@@ -82,7 +84,7 @@ endif()
 
 # all install commands get the same destination. this allows us to use paths
 # relative to the executable.
-install(TARGETS libobjs DESTINATION example_destination)
+#install(TARGETS libobjs DESTINATION example_destination)
 # this is basically a repeat of the file copy instruction that copies the
 # resources in the build directory, but here we tell CMake that we want it
 # in the package

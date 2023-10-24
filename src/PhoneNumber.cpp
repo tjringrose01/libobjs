@@ -41,7 +41,7 @@ const unordered_map<string, PhoneNumber::CountryInfo> PhoneNumber::validCountryC
 PhoneNumber::PhoneNumber() = default;
 
 // Constructor with default country code
-PhoneNumber::PhoneNumber(const string& areaCode, const string& prefix, const string& number, const string& countryCode) {
+PhoneNumber::PhoneNumber(const string& countryCode, const string& areaCode, const string& prefix, const string& number) {
     validatePart(countryCode, "Country Code");
     if (validCountryCodes.find(countryCode) == validCountryCodes.end()) {
         throw invalid_argument("Invalid country code.");
@@ -112,12 +112,12 @@ bool PhoneNumber::operator==(const PhoneNumber& other) const {
 void PhoneNumber::validatePart(const string& part, const string& partName) const {
     // Throw an exception if we are empty
     if ( part.empty() ) {
-        throw invalid_argument(partName + " is invalid.");
+        throw invalid_argument(partName + " is empty.");
     }
 
     // Throw an exception if we are not numeric
     if ( ! isNumber(part) ) {
-        throw invalid_argument(partName + " is invalid.");
+        throw invalid_argument(partName + " is not numeric.");
     }
 }
 

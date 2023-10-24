@@ -13,10 +13,10 @@ pipeline {
 
         stage("Build") {
             steps {
-                """
+                sh '''
                 cmake .
                 make
-                """
+                '''
             }
         }
     }

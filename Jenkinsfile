@@ -23,6 +23,7 @@ pipeline {
         stage("Tests") {
             steps {
                 echo "Tests"
+                sh "bin/unit_tests"
             }
         }
     }

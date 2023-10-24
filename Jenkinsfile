@@ -4,9 +4,19 @@ pipeline {
     stages {
         stage('Tools Information') {
             steps {
-                sh "cmake --version"
                 sh "g++ --version"
+                sh "make --version"
+                sh "cmake --version"
                 sh "ls -al"
+            }
+        }
+
+        stage("Build") {
+            steps {
+                '''
+                cmake .
+                make
+                '''
             }
         }
     }

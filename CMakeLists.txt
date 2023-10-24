@@ -8,11 +8,9 @@ project(libobjs)
 # these instructions search the directory tree when CMake is
 # invoked and put all files that match the pattern in the variables
 # `sources` and `data`
-file(GLOB_RECURSE sources      src/main/*.cpp src/main/*.h)
-file(GLOB_RECURSE sources_test src/test/*.cpp)
-file(GLOB_RECURSE data resources/*)
-# you can use set(sources src/main.cpp) etc if you don't want to
-# use globbing to find files automatically
+file(GLOB_RECURSE sources      src/*.cpp src/*.h)
+file(GLOB_RECURSE sources_test test/*.cpp)
+file(GLOB_RECURSE data         resources/*)
 
 ###############################################################################
 ## target definitions #########################################################
@@ -29,7 +27,7 @@ add_executable(libobjs ${sources} ${data})
 target_compile_options(libobjs PUBLIC -std=c++1y -Wall -Wfloat-conversion)
 
 # this lets me include files relative to the root source directory with a <> pair
-target_include_directories(libobjs PUBLIC src/main)
+target_include_directories(libobjs PUBLIC src)
 
 # this copies all resource files in the build directory
 # we need this, because we want to work with paths relative to the executable

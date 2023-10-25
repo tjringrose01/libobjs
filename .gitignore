@@ -56,3 +56,9 @@ CPackConfig.cmake
 CPackSourceConfig.cmake
 cmake_install.cmake
 *.swp
+*.vcxproj
+*.filters
+*.dir
+*.sln
+.cmake
+build/*

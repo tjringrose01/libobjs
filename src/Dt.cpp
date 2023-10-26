@@ -142,3 +142,15 @@ int Dt::get_month() {
 int Dt::get_day() {
     return(this->day);
 }
+
+// Check if equal to another date
+bool Dt::isEqualTo(const Dt& other) const {
+    return (year == other.year &&
+            month == other.month &&
+            day == other.day);
+}
+
+// Overload the equality operator (==)
+bool Dt::operator==(const Dt& other) const {
+    return isEqualTo(other);
+}

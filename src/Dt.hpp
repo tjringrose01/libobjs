@@ -1,5 +1,5 @@
 /**
- *  SSN.h - SSN Class Definition - This class is responsible
+ *  SSN.hpp - SSN Class Definition - This class is responsible
  *           for defining a Dt.
  *
  *  Copyright 2023 Timothy Ringrose
@@ -57,6 +57,12 @@ public:
     int get_year();
     int get_month();
     int get_day();
+
+    // Overload the equality operator (==)
+    bool operator==(const Dt& other) const;
+
+    // Check if equal to another phone number
+    bool isEqualTo(const Dt& other) const;
 };
 
 #endif

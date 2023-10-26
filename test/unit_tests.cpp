@@ -21,7 +21,8 @@
  */
 
 #include <gtest/gtest.h>
-#include "../src/PhoneNumber.h"
+#include "../src/PhoneNumber.hpp"
+#include "../src/Dt.hpp"
 
 using namespace std;
 
@@ -50,6 +51,15 @@ TEST(PhoneNumberTest, InvalidPhoneNumber) {
 
     // Invalid part (non-numeric prefix)
     EXPECT_THROW(PhoneNumber("1", "555", "12a", "4567"), invalid_argument);
+}
+
+TEST(DtTest, ValidDate) {
+    Dt dt1(2023, 12, 31);
+    Dt dt2(2023, 12, 31);
+    Dt dt3(2023, 1, 1);
+
+    EXPECT_TRUE(dt1 == dt2);
+    EXPECT_FALSE(dt1 == dt3);
 }
 
 

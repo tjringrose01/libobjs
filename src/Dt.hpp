@@ -45,7 +45,7 @@ public:
 
     /* Public Methods */
     Dt();
-    Dt(int year, int month, int day);
+    Dt(const int& year, const int& month, const int& day);
     ~Dt();
 
     string toString();

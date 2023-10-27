@@ -37,7 +37,7 @@ using namespace std;
 #define MIN_DAY 1
 #define MAX_DAY 31
 
-Dt::Dt(int year, int month, int day) {
+Dt::Dt(const int& year, const int& month, const int& day) {
     set_year(year);
     set_month(month);
     set_day(day);

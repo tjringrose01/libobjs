@@ -5,8 +5,6 @@ project(orch
         LANGUAGES CXX
         )
 
-
-
 # this is for our testing framework
 # we don't add REQUIRED because it's just for testing
 find_package(GTest)

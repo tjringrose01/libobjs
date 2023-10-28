@@ -21,8 +21,8 @@
  */
 
 #include <gtest/gtest.h>
-#include "../src/PhoneNumber.hpp"
-#include "../src/Dt.hpp"
+#include "PhoneNumber.hpp"
+#include "Dt.hpp"
 
 using namespace std;
 
@@ -54,9 +54,15 @@ TEST(PhoneNumberTest, InvalidPhoneNumber) {
 }
 
 TEST(DtTest, ValidDate) {
-    Dt dt1(2023, 12, 31);
-    Dt dt2(2023, 12, 31);
-    Dt dt3(2023, 1, 1);
+	int year = 2023;
+	int month1 = 12;
+	int month2 = 1;
+	int day1 = 31;
+	int day2 = 1;
+
+    Dt dt1(year, month1, day1);
+    Dt dt2(year, month1, day1);
+    Dt dt3(year, month2, day2);
 
     EXPECT_TRUE(dt1 == dt2);
     EXPECT_FALSE(dt1 == dt3);

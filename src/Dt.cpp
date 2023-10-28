@@ -22,7 +22,7 @@
  */
 
 #include <string>
-#include "Dt.h"
+#include "Dt.hpp"
 
 using namespace std;
 
@@ -43,11 +43,7 @@ Dt::Dt(const int& year, const int& month, const int& day) {
     set_day(day);
 }
 
-Dt::Dt() {
-    this->year = 1900;
-    this->month = 1;
-    this->day = 1;
-}
+Dt::Dt() = default;
 
 /**
  * Housekeeping

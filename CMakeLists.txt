@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 project(libobjs
         VERSION 0.1
         DESCRIPTION "Collection of libraries to define the world in C++"
-        LANGUAGES CXX
+        #LANGUAGES CXX
         )
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)

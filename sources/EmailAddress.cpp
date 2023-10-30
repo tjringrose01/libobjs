@@ -1,8 +1,8 @@
 /**
- *  EmailAddress.cc - libobjs Class Implementation - This class is
- *                   responsible for defining a phone number.
+ *  EmailAddress.cpp - libobjs Class Implementation - This class is
+ *                     responsible for defining a phone number.
  *
- *  Copyright 2022 Timothy Ringrose
+ *  Copyright 2023 Timothy Ringrose
  *
  *  This file is part of libobjs.
  *
@@ -23,7 +23,7 @@
 
 #include <string>
 #include <stdexcept>
-#include "EmailAddress.h"
+#include "EmailAddress.hpp"
 
 using namespace std;
 
@@ -50,26 +50,6 @@ EmailAddress::EmailAddress(string email) {
  */
 EmailAddress::~EmailAddress() {
 }
-
-/**
-PhoneNumber& PhoneNumber::operator=(const PhoneNumber& address) {
-    if (this != &address) // make sure not same object
-    {
-        //menuName = cm.menuName;
-        //menuTitle = cm.menuTitle;
-        //foreMenuColor = cm.foreMenuColor;
-        //backMenuColor = cm.backMenuColor;
-        //debugFlag = cm.debugFlag;
-
-        //menuItems.clear();
-        //for (int x=0; x < cm.menuItems.size(); x++)
-        //{
-            //menuItems.push_back(cm.menuItems.at(x));
-        //}
-    }
-    return *this;    // Return ref for multiple assignment
-}
-*/
 
 string EmailAddress::toString() {
 

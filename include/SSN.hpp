@@ -1,6 +1,6 @@
 /**
- *  Address.h - Address Class Definition - This class is responsible
- *              for defining a person. 
+ *  SSN.hpp - SSN Class Definition - This class is responsible
+ *            for defining a Social Security Number. 
  *
  *  Copyright 2023 Timothy Ringrose
  *
@@ -21,25 +21,19 @@
  *
  */
 
-#ifndef __Address__
-#define __Address__
+#ifndef __SSN__
+#define __SSN__
 
-#include <stdlib.h>
 #include <string>
-#include <iostream>
 
 using namespace std;
 
-typedef string String;
-
-class Address {
+class SSN {
 private:
     /* Private Members */
-    string streetAddressLine1;
-    string streetAddressLine2;
-    string city;
-    string state;
-    string zipCode;
+    string areaNo;
+    string groupNo;
+    string serialNo;
 
     /* Private Methods */
 
@@ -47,25 +41,19 @@ public:
     /* Public Members */
 
     /* Public Methods */
-    Address();
-    Address(string streetAddressLine1, string streetAddressLine2, string city, string state, string zipCode);
-    ~Address();
+    SSN();
+    SSN(string areaNo, string groupNo, string serialNo);
+    ~SSN();
 
     string toString();
 
-    void set_streetAddressLine1(string streetAddressLine1);
-    void set_streetAddressLine2(string streetAddressLine2);
-    void set_city(string city);
-    void set_state(string state);
-    void set_zipCode(string zipCode);
+    void set_areaNo(string areaNo);
+    void set_groupNo(string groupNo);
+    void set_serialNo(string serialNo);
 
-    string get_streetAddressLine1();
-    string get_streetAddressLine2();
-    string get_city();
-    string get_state();
-    string get_zipCode();
-    
-    //Address operator=(const Address address);
+    string get_areaNo();
+    string get_groupNo();
+    string get_serialNo();
 };
 
 #endif

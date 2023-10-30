@@ -2,7 +2,7 @@
  *  CurrencyAmount.cpp - Currency Class Definition - This class is responsible
  *                       for defining a currency amount.
  *
- *  Copyright 2022 Timothy Ringrose
+ *  Copyright 2023 Timothy Ringrose
  *
  *  This file is part of libobjs.
  *
@@ -21,7 +21,7 @@
  *
  */
 
-#include "CurrencyAmount.h"
+#include "CurrencyAmount.hpp"
 #include <sstream>
 #include <iomanip>
 #include <cmath>

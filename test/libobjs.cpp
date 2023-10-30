@@ -1,10 +1,10 @@
 #include <iostream>
 
-#include "EmailAddress.h"
-#include "Address.h"
-#include "PhoneNumber.h"
-#include "Person.h"
-#include "SSN.h"
+#include "EmailAddress.hpp"
+#include "Address.hpp"
+#include "PhoneNumber.hpp"
+#include "Person.hpp"
+#include "SSN.hpp"
 
 using namespace std;
 
@@ -20,7 +20,7 @@ int main(int argc, char** argv) {
 
     cout << addr2.toString() << endl;
 
-    PhoneNumber pn = PhoneNumber("555", "555", "5555", "1");
+    PhoneNumber pn = PhoneNumber("1", "555", "555", "5555");
 
     cout << pn.toString() << endl;
 

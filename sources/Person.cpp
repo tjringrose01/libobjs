@@ -3,7 +3,7 @@
  *              responsible for reading in the configuration file and
  *              storing it's informtion within it's class members
  *
- *  Copyright 2022 Timothy Ringrose
+ *  Copyright 2023 Timothy Ringrose
  *
  *  This file is part of libobjs.
  *
@@ -23,11 +23,10 @@
  */
 
 #include <string>
-#include "Person.h"
-#include "Dt.h"
+#include "Person.hpp"
+#include "Dt.hpp"
 
 using namespace std;
-typedef string String;
 
 #define PROGRAM "libobjs"
 
@@ -48,7 +47,7 @@ Person::~Person() {
 /**
  * Method to try and show te object in string form.
  */
-String Person::toString() {
+string Person::toString() {
     string retString = "";
 
     retString += firstName;
@@ -72,7 +71,7 @@ String Person::toString() {
     return(retString);
 }
 
-String Person::getSexLabel() {
+string Person::getSexLabel() {
     string label = "Unknown";
     switch (this->sex) {
         case 0:

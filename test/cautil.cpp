@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "CurrencyAmount.h"
+#include "CurrencyAmount.hpp"
 
 using namespace std;
 

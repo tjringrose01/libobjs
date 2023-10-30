@@ -1,8 +1,8 @@
 /**
- *  SSN.cc - libobjs Class Implementation - This class is
- *           responsible for defining a Social Security Number.
+ *  SSN.cpp - libobjs Class Implementation - This class is
+ *            responsible for defining a Social Security Number.
  *
- *  Copyright 2022 Timothy Ringrose
+ *  Copyright 2023 Timothy Ringrose
  *
  *  This file is part of libobjs.
  *
@@ -66,7 +66,7 @@
 
 #include <string>
 #include <stdexcept>
-#include "SSN.h"
+#include "SSN.hpp"
 
 using namespace std;
 

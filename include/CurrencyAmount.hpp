@@ -1,6 +1,6 @@
 /**
- *  CurrencyAmount.h - Currency Class Definition - This class is responsible
- *                      for defining a currency amount.
+ *  CurrencyAmount.hpp - Currency Class Definition - This class is responsible
+ *                       for defining a currency amount.
  *
  *  Copyright 2023 Timothy Ringrose
  *

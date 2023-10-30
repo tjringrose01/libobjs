@@ -1,6 +1,6 @@
 /**
- *  EmailAddress.h - EmailAddress Class Definition - This class is responsible
- *                   for defining a person. 
+ *  EmailAddress.hpp - EmailAddress Class Definition - This class is responsible
+ *                     for defining a person. 
  *
  *  Copyright 2023 Timothy Ringrose
  *

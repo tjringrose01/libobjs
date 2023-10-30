@@ -1,6 +1,6 @@
 /**
- *  Person.h - Person Class Definition - This class is responsible
- *              for defining a person. 
+ *  Person.hpp - Person Class Definition - This class is responsible
+ *               for defining a person. 
  *
  *  Copyright 2023 Timothy Ringrose
  *
@@ -21,15 +21,16 @@
  *
  */
 
-#ifndef __Person__
-#define __Person__
+#ifndef __PERSON__
+#define __PERSON__
 
 #include <string>
-#include "Dt.h"
-#include "Address.h"
-#include "PhoneNumber.h"
-#include "EmailAddress.h"
-#include "SSN.h"
+#include "Dt.hpp"
+#include "Address.hpp"
+#include "PhoneNumber.hpp"
+#include "EmailAddress.hpp"
+#include "SSN.hpp"
+
 using namespace std;
 
 class Person {
@@ -66,8 +67,6 @@ public:
     String toString();
 
     String getSexLabel();
-
-    //CursedMenu& operator=(const CursedMenu& cm);
 };
 
 #endif

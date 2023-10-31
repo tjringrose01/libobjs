@@ -53,21 +53,47 @@ TEST(PhoneNumberTest, InvalidPhoneNumber) {
     EXPECT_THROW(PhoneNumber("1", "555", "12a", "4567"), invalid_argument);
 }
 
-TEST(DtTest, ValidDate) {
-	int year = 2023;
-	int month1 = 12;
-	int month2 = 1;
-	int day1 = 31;
-	int day2 = 1;
+// Test for creating and formatting
+TEST(DtTest, Formatting) {
+    Dt dt1(2023, 12, 31);
+    Dt dt2(2023, 12, 31);
+    Dt dt3(2023, 1, 1);
 
-    Dt dt1(year, month1, day1);
-    Dt dt2(year, month1, day1);
-    Dt dt3(year, month2, day2);
+    EXPECT_EQ("12/31/2023", dt1.toString());
+    EXPECT_EQ("12/31/2023", dt2.toString());
+    EXPECT_EQ("01/01/2023", dt3.toString());
 
+    // Check equality
     EXPECT_TRUE(dt1 == dt2);
     EXPECT_FALSE(dt1 == dt3);
 }
 
+// Test for invalid dates
+TEST(DtTest, InvalidDate) {
+    // Invalid year
+    EXPECT_THROW(Dt(-1,1,1), invalid_argument);
+    EXPECT_THROW(Dt(10000,1,1), invalid_argument);
+
+    // Invalid month
+    EXPECT_THROW(Dt(2023,-1,1), invalid_argument);
+    EXPECT_THROW(Dt(2023,13,1), invalid_argument);
+    
+    // Invalid day
+    EXPECT_THROW(Dt(2023,1,-1), invalid_argument);
+    EXPECT_THROW(Dt(2023,2,29), invalid_argument);
+    EXPECT_THROW(Dt(2023,3,32), invalid_argument);
+    EXPECT_THROW(Dt(2023,4,31), invalid_argument);
+    EXPECT_THROW(Dt(2023,5,32), invalid_argument);
+    EXPECT_THROW(Dt(2023,6,31), invalid_argument);
+    EXPECT_THROW(Dt(2023,7,32), invalid_argument);
+    EXPECT_THROW(Dt(2023,8,32), invalid_argument);
+    EXPECT_THROW(Dt(2023,9,31), invalid_argument);
+    EXPECT_THROW(Dt(2023,10,32), invalid_argument);
+    EXPECT_THROW(Dt(2023,11,31), invalid_argument);
+    EXPECT_THROW(Dt(2023,12,32), invalid_argument);
+
+
+}
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);

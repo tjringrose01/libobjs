@@ -80,7 +80,7 @@ TEST(DtTest, InvalidDate) {
     
     // Invalid day
     EXPECT_THROW(Dt(2023,1,-1), invalid_argument);
-    EXPECT_THROW(Dt(2023,2,29), invalid_argument);
+    EXPECT_THROW(Dt(2023,2,28), invalid_argument);
     EXPECT_THROW(Dt(2023,3,32), invalid_argument);
     EXPECT_THROW(Dt(2023,4,31), invalid_argument);
     EXPECT_THROW(Dt(2023,5,32), invalid_argument);

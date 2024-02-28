@@ -62,3 +62,5 @@ cmake_install.cmake
 *.sln
 .cmake
 build/*
+
+settings.json

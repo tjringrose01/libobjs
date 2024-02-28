@@ -258,3 +258,28 @@ bool Dt::isEqualTo(const Dt& other) const {
 bool Dt::operator==(const Dt& other) const {
     return isEqualTo(other);
 }
+
+/**
+ * Gets the day of the week for the date.
+ *
+ * @return A string representing the day of the week.
+ */
+string Dt::getDayOfWeek() const {
+    // Array with weekday names
+    std::string week[7] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+
+    // Adjust month number for algorithm
+    int adjustedMonth = this->month;
+    int adjustedYear = this->year;
+    if (month < 3) {
+        adjustedMonth += 12;
+        adjustedYear--;
+    }
+
+    // Tomohiko Sakamoto's Algorithm
+    int h = (this->day + 2*adjustedMonth + 3*(adjustedMonth+1)/5 + adjustedYear + adjustedYear/4 - adjustedYear/100 + adjustedYear/400) % 7;
+
+    // Return the name of the weekday
+    return week[h];
+}
+

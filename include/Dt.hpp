@@ -77,7 +77,7 @@ public:
      *
      * @return A string representing the date.
      */
-    string toString();
+    string to_string() const;
 
     /**
      * Sets the year of a date object.
@@ -108,21 +108,21 @@ public:
      *
      * @return An integer representing the year of the date object.
      */
-    int get_year();
+    int get_year() const;
 
     /**
      * Gets the month of a date object.
      *
      * @return An integer representing the month of the date object.
      */
-    int get_month();
+    int get_month() const;
 
     /**
      * Gets the day of a date object.
      *
      * @return An integer representing the day of the date object.
      */
-    int get_day();
+    int get_day() const;
 
     /**
      * Overloads the equality operator to compare two date objects.
@@ -146,6 +146,18 @@ public:
      * @return A string representing the day of the week.
      */
     std::string getDayOfWeek() const;
+
+    /**
+     * Overloads the stream insertion operator to output the date object in a custom format.
+     *
+     * @param os The output stream where the date object will be inserted.
+     * @param date The date object to be inserted into the output stream.
+     * @return The output stream with the date object inserted.
+     */
+    friend std::ostream& operator<<(std::ostream& os, const Dt& date);
 };
+
+
+
 
 #endif

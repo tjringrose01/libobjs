@@ -16,7 +16,7 @@ public:
 
 				try {
         				date = Dt(year,month,day);
-					cout << date.toString() << endl;
+					cout << date.to_string() << endl;
 				} catch (const invalid_argument& e) {
 				}
 

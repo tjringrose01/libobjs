@@ -22,6 +22,7 @@
  */
 
 #include <string>
+#include <ostream>
 #include "Dt.hpp"
 
 using namespace std;
@@ -73,7 +74,7 @@ Dt::~Dt() {
  * @return A string representing the date. If the month or day is less than 10, 
  * they are padded with a leading zero to ensure a consistent string length.
  */
-string Dt::toString() {
+string Dt::to_string() const {
     // Initialize an empty string
     string retString = "";
 
@@ -81,7 +82,7 @@ string Dt::toString() {
     if (this->month < 10) retString += "0";
     
     // Add the month to the string
-    retString += to_string(this->month);
+    retString += std::to_string(this->month);
 
     // Add a slash to separate month and day
     retString += "/";
@@ -90,7 +91,7 @@ string Dt::toString() {
     if (this->day < 10) retString += "0";
 
     // Add the day to the string
-    retString += to_string(this->day);
+    retString += std::to_string(this->day);
 
     // Add a slash to separate day and year
     retString += "/";
@@ -213,7 +214,7 @@ void Dt::set_day(int day) {
  *
  * @return An integer representing the year of the date object.
  */
-int Dt::get_year() {
+int Dt::get_year() const {
     return(this->year);
 }
 
@@ -222,7 +223,7 @@ int Dt::get_year() {
  *
  * @return An integer representing the month of the date object.
  */
-int Dt::get_month() {
+int Dt::get_month() const {
     return(this->month);
 }
 
@@ -231,7 +232,7 @@ int Dt::get_month() {
  *
  * @return An integer representing the day of the date object.
  */
-int Dt::get_day() {
+int Dt::get_day() const {
     return(this->day);
 }
 
@@ -281,5 +282,17 @@ string Dt::getDayOfWeek() const {
 
     // Return the name of the weekday
     return week[h];
+}
+
+/**
+ * Overloads the stream insertion operator to output the date object in a custom format.
+ *
+ * @param os The output stream where the date object will be inserted.
+ * @param date The date object to be inserted into the output stream.
+ * @return The output stream with the date object inserted.
+ */
+std::ostream& operator<<(std::ostream& os, const Dt& date) {
+    os << date.to_string();
+    return os;
 }
 

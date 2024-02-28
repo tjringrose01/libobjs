@@ -25,6 +25,13 @@ int main(int argc, char** argv) {
     cout << pn.toString() << endl;
 
     Dt birthDate = Dt(1980,12,14);
+    
+    try {
+        Dt birthDate2 = Dt(1900,2,29);
+    } catch (exception &exc) {
+        cerr << "ERROR: Unable to assign birth date." << endl;
+    }
+    
 
     SSN ssn = SSN("123","45","6789");
 

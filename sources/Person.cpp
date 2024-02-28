@@ -1,7 +1,7 @@
 /**
- *  Person.cc - Person Class Implementation - This class is
- *              responsible for reading in the configuration file and
- *              storing it's informtion within it's class members
+ *  Person.cpp - Person Class Implementation - This class is
+ *               responsible for reading in the configuration file and
+ *               storing it's informtion within it's class members
  *
  *  Copyright 2023 Timothy Ringrose
  *
@@ -30,6 +30,19 @@ using namespace std;
 
 #define PROGRAM "libobjs"
 
+/**
+ * Constructor for the Person class that initializes the object with provided information.
+ *
+ * @param firstName The first name of the person (string).
+ * @param middleName The middle name of the person (string).
+ * @param lastName The last name of the person (string).
+ * @param address The address of the person (Address).
+ * @param phoneNumber The phone number of the person (PhoneNumber).
+ * @param sex The gender of the person (int).
+ * @param birthdate The birthdate of the person (Dt).
+ * @param ssn The social security number of the person (SSN).
+ * @param email The email address of the person (EmailAddress).
+ */
 Person::Person(string firstName, string middleName, string lastName, Address address, PhoneNumber phoneNumber, int sex, Dt birthdate, SSN ssn, EmailAddress email) {
     this->firstName = firstName;
     this->middleName = middleName;
@@ -45,7 +58,9 @@ Person::~Person() {
 }
 
 /**
- * Method to try and show te object in string form.
+ * Method to convert the object into a string representation.
+ *
+ * @return A string representing the object in a formatted manner.
  */
 string Person::toString() {
     string retString = "";
@@ -64,13 +79,18 @@ string Person::toString() {
     retString += "; ";
     retString += phoneNumber.toString();
     retString += "; ";
-    retString += birthdate.toString();
+    retString += birthdate.to_string();
     retString += "; ";
     retString += email.toString();
 
     return(retString);
 }
 
+/**
+ * This method returns the label corresponding to the sex of the person.
+ *
+ * @return A string representing the sex label (Male, Female, or Unknown).
+ */
 string Person::getSexLabel() {
     string label = "Unknown";
     switch (this->sex) {

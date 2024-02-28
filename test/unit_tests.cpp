@@ -59,9 +59,9 @@ TEST(DtTest, Formatting) {
     Dt dt2(2023, 12, 31);
     Dt dt3(2023, 1, 1);
 
-    EXPECT_EQ("12/31/2023", dt1.toString());
-    EXPECT_EQ("12/31/2023", dt2.toString());
-    EXPECT_EQ("01/01/2023", dt3.toString());
+    EXPECT_EQ("12/31/2023", dt1.to_string());
+    EXPECT_EQ("12/31/2023", dt2.to_string());
+    EXPECT_EQ("01/01/2023", dt3.to_string());
 
     // Check equality
     EXPECT_TRUE(dt1 == dt2);
@@ -73,6 +73,7 @@ TEST(DtTest, InvalidDate) {
     // Invalid year
     EXPECT_THROW(Dt(-1,1,1), invalid_argument);
     EXPECT_THROW(Dt(10000,1,1), invalid_argument);
+    EXPECT_THROW(Dt(1900,2,29), invalid_argument);
 
     // Invalid month
     EXPECT_THROW(Dt(2023,-1,1), invalid_argument);

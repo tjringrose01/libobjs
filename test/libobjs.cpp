@@ -14,15 +14,24 @@ int main(int argc, char** argv) {
 
     Address address = Address("411 Main Street", "Apartment 2", "Springfield", "OH", "45501");
 
-    cout << address.toString() << endl;
+    cout << address.to_string() << endl;
 
     Address addr2 = address;
 
-    cout << addr2.toString() << endl;
+    Address addr3 = address;
+    addr3.set_state("MO");
+
+    cout << addr2.to_string() << endl;
+
+    cout << addr3 << endl;
+
+    if (address == addr2) cout << "Address and addr2 are equal!" << endl;
+
+    if (address == addr3) {} else cout << "Address and addr3 are NOT equal!" << endl;
 
     PhoneNumber pn = PhoneNumber("1", "555", "555", "5555");
 
-    cout << pn.toString() << endl;
+    cout << pn.to_string() << endl;
 
     Dt birthDate = Dt(1980,12,14);
     

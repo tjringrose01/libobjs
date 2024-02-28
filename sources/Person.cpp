@@ -75,9 +75,9 @@ string Person::toString() {
     retString += "; ";
     retString += ssn.toString();
     retString += "; ";
-    retString += address.toString();
+    retString += address.to_string();
     retString += "; ";
-    retString += phoneNumber.toString();
+    retString += phoneNumber.to_string();
     retString += "; ";
     retString += birthdate.to_string();
     retString += "; ";

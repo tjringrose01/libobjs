@@ -1,6 +1,6 @@
 /**
  *  PhoneNumber.h - PhoneNumber Class Definition - This class is responsible
- *                  for defining a person. 
+ *                  for defining a Phone Number. 
  *
  *  Copyright 2023 Timothy Ringrose
  *
@@ -32,45 +32,111 @@
 
 using namespace std;
 
+/**
+ * PhoneNumber class represents a phone number with country code, area code, prefix, and number.
+ */
 class PhoneNumber {
 public:
-    // Empty constructor
+    /**
+     * Default constructor for PhoneNumber.
+     */
     PhoneNumber();
 
-    // Constructor with default country code
+    /**
+     * Constructor for PhoneNumber with default country code.
+     * 
+     * @param countryCode The country code of the phone number.
+     * @param areaCode The area code of the phone number.
+     * @param prefix The prefix of the phone number.
+     * @param number The number of the phone number.
+     */
     PhoneNumber(const string& countryCode, const string& areaCode, const string& prefix, const string& number);
 
-    // Getter methods
+    /**
+     * Get the country code of the phone number.
+     *
+     * @return string The country code.
+     */
     string getCountryCode() const;
+
+    /**
+     * Get the area code of the phone number.
+     *
+     * @return string The area code.
+     */
     string getAreaCode() const;
+
+    /**
+     * Get the prefix of the phone number.
+     *
+     * @return string The prefix.
+     */
     string getPrefix() const;
+
+    /**
+     * Get the number of the phone number.
+     *
+     * @return string The number.
+     */
     string getNumber() const;
 
-    // Output in E.164 format
+    /**
+     * Get the phone number in E.164 format.
+     *
+     * @return string The phone number in E.164 format.
+     */
     string toE164Format() const;
 
-    // Output in local format for the United States
+    /**
+     * Get the phone number in local format for the United States.
+     *
+     * @return string The phone number in local format.
+     */
     string toLocalFormat() const;
 
-    // Output in local format for the United States
-    string toString() const;
+    /**
+     * Convert the phone number to a string representation.
+     *
+     * @return string The phone number as a string.
+     */
+    string to_string() const;
 
-    // Check if equal to another phone number
+    /**
+     * Check if this phone number is equal to another phone number.
+     *
+     * @param other The other phone number to compare to.
+     * @return bool True if the phone numbers are equal, false otherwise.
+     */
     bool isEqualTo(const PhoneNumber& other) const;
 
-    // Overload the equality operator (==)
+    /**
+     * Overload the equality operator (==).
+     *
+     * @param other The other phone number to compare to.
+     * @return bool True if the phone numbers are equal, false otherwise.
+     */
     bool operator==(const PhoneNumber& other) const;
 
 private:
-    // Helper function to validate a phone number part
+    /**
+     * Helper function to validate a phone number part.
+     *
+     * @param part The part of the phone number to validate.
+     * @param partName The name of the part being validated.
+     */
     void validatePart(const string& part, const string& partName) const;
 
+    /**
+     * Struct to hold country code and country name information.
+     */
     struct CountryInfo {
         string countryCode;
         string countryName;
     };
 
-    // Known valid country codes and names
+    /**
+     * Map of valid country codes and names.
+     */
     static const unordered_map<string, CountryInfo> validCountryCodes;
 
     string countryCode_;
@@ -78,8 +144,22 @@ private:
     string prefix_;
     string number_;
 
-    // Determine if string is all numeric characters
+    /**
+     * Check if the given string consists of all numeric characters.
+     *
+     * @param s The string to check.
+     * @return bool True if the string is all numeric, false otherwise.
+     */
     bool isNumber(const string& s) const;
+
+    /**
+     * Overload the stream insertion operator (<<) to output the phone number in E.164 format.
+     *
+     * @param os The output stream.
+     * @param phoneNumber The phone number to output.
+     * @return ostream The output stream with the phone number in E.164 format.
+     */
+    friend ostream& operator<<(ostream& os, const PhoneNumber& phoneNumber);
 };
 
 #endif // PHONENUMBER_H

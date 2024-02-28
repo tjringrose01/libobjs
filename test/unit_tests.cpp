@@ -96,6 +96,43 @@ TEST(DtTest, InvalidDate) {
 
 }
 
+// Test for EmailAddress class
+TEST(EmailAddressTest, ValidEmail) {
+    EmailAddress email1("test@example.com");
+    EmailAddress email2("john.doe@example.com");
+    EmailAddress email3("john.doe@example.com");
+
+    EXPECT_EQ("test", email1.get_name());
+    EXPECT_EQ("example.com", email1.get_domain());
+    EXPECT_EQ("john.doe", email2.get_name());
+    EXPECT_EQ("example.com", email2.get_domain());
+
+    EXPECT_TRUE(email2 == email3);
+    EXPECT_FALSE(email1 == email2);
+}
+
+TEST(EmailAddressTest, InvalidEmail) {
+    EXPECT_THROW(EmailAddress("invalid_email"), invalid_argument);
+    EXPECT_THROW(EmailAddress("missing@domain"), invalid_argument);
+}
+
+TEST(EmailAddressTest, SpecialCases) {
+    // "@" at the beginning
+    EXPECT_THROW(EmailAddress("@invalid.com"), invalid_argument);
+
+    // "@" at the end
+    EXPECT_THROW(EmailAddress("invalid@"), invalid_argument);
+
+    // Empty name
+    EXPECT_THROW(EmailAddress("@example.com"), invalid_argument);
+
+    // Empty domain
+    EXPECT_THROW(EmailAddress("test@"), invalid_argument);
+}
+
+
+
+
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

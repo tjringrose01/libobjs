@@ -1,6 +1,6 @@
 /**
  *  EmailAddress.cpp - libobjs Class Implementation - This class is
- *                     responsible for defining a phone number.
+ *                     responsible for defining an email address.
  *
  *  Copyright 2023 Timothy Ringrose
  *
@@ -29,37 +29,56 @@ using namespace std;
 
 #define PROGRAM "libobjs"
 
+/**
+ * Default constructor for EmailAddress class.
+ * Initializes name and domain to empty strings.
+ */
 EmailAddress::EmailAddress() {
 	this->name = "";
 	this->domain = "";
 }
 
+/**
+ * Constructor for EmailAddress class that takes an email address.
+ * Validates the email address and sets name and domain accordingly.
+ *
+ * @param email The email address to set.
+ * @throws invalid_argument if the email is invalid.
+ */
 EmailAddress::EmailAddress(string email) {
 	if ( email.length() > 254 )
 		throw invalid_argument( "ERROR: received invalid value for email" );
 
-	if ( email.find("@") == string::npos )
+	size_t atPos = email.find("@");
+	if ( atPos == string::npos )
 		throw invalid_argument( "ERROR: received invalid value for email" );
 
-	set_name(email);
-	set_domain(email);
+	set_name(email.substr(0, atPos));
+	set_domain(email.substr(atPos + 1));
 }
 
 /**
- * Housekeeping
+ * Destructor for EmailAddress class.
+ * Performs housekeeping tasks.
  */
 EmailAddress::~EmailAddress() {
 }
 
-string EmailAddress::toString() {
-
-    string retString = "";
-
-    retString = get_emailAddress();
-    
-    return(retString);
+/**
+ * Get the email address as a string.
+ *
+ * @return The email address.
+ */
+string EmailAddress::to_string() const {
+    return(get_emailAddress());
 }
 
+/**
+ * Set the name part of the email address.
+ *
+ * @param email The email address to extract the name from.
+ * @throws invalid_argument if the email is invalid.
+ */
 void EmailAddress::set_name(string email) {
 	//Parse out name from emailAddress
 	int n = email.find("@");
@@ -75,6 +94,12 @@ void EmailAddress::set_name(string email) {
 	//cout << this->name << endl;
 }
 
+/**
+ * Set the domain part of the email address.
+ *
+ * @param email The email address to extract the domain from.
+ * @throws invalid_argument if the email is invalid.
+ */
 void EmailAddress::set_domain(string email) {
 	//Parse out domain from emailAddress
 	int n = email.find("@");
@@ -88,14 +113,64 @@ void EmailAddress::set_domain(string email) {
 	this->domain = email.substr(n+1,email.length() - n);
 }
 
-string EmailAddress::get_name() {
+/**
+ * Get the name part of the email address.
+ *
+ * @return The name part of the email address.
+ */
+string EmailAddress::get_name() const {
     return(this->name);
 }
 
-string EmailAddress::get_domain() {
+/**
+ * Get the domain part of the email address.
+ *
+ * @return The domain part of the email address.
+ */
+string EmailAddress::get_domain() const {
     return(this->domain);
 }
 
-string EmailAddress::get_emailAddress() {
+/**
+ * Get the full email address.
+ *
+ * @return The full email address.
+ */
+string EmailAddress::get_emailAddress() const {
     return(this->name + "@" + this->domain);
 }
+
+/**
+ * Check if the email address is equal to another email address.
+ *
+ * @param other The other email address to compare to.
+ * @return bool True if the email addresses are equal, false otherwise.
+ */
+bool EmailAddress::IsEqualTo(const EmailAddress& other) const {
+    return (this->name == other.name && this->domain == other.domain);
+}
+
+/**
+ * Overload the equality operator (==) to compare two email addresses using IsEqualTo member function.
+ *
+ * @param other The other email address to compare to.
+ * @return bool True if the email addresses are equal, false otherwise.
+ */
+bool EmailAddress::operator==(const EmailAddress& other) const {
+	return IsEqualTo(other);
+}
+
+/**
+ * Overload the stream insertion operator (<<) to output the email address using to_string().
+ *
+ * @param os The output stream.
+ * @param email The email address to output.
+ * @return ostream The output stream with the email address.
+ */
+ostream& operator<<(ostream& os, const EmailAddress& email) {
+    os << email.to_string();
+    return os;
+}
+
+
+

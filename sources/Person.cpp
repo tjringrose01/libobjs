@@ -81,7 +81,7 @@ string Person::toString() {
     retString += "; ";
     retString += birthdate.to_string();
     retString += "; ";
-    retString += email.toString();
+    retString += email.to_string();
 
     return(retString);
 }

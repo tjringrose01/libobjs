@@ -62,7 +62,7 @@ Person::~Person() {
  *
  * @return A string representing the object in a formatted manner.
  */
-string Person::toString() {
+string Person::to_string() const {
     string retString = "";
 
     retString += firstName;
@@ -73,7 +73,7 @@ string Person::toString() {
     retString += "; ";
     retString += getSexLabel();
     retString += "; ";
-    retString += ssn.toString();
+    retString += ssn.to_string();
     retString += "; ";
     retString += address.to_string();
     retString += "; ";
@@ -91,7 +91,7 @@ string Person::toString() {
  *
  * @return A string representing the sex label (Male, Female, or Unknown).
  */
-string Person::getSexLabel() {
+string Person::getSexLabel() const {
     string label = "Unknown";
     switch (this->sex) {
         case 0:
@@ -107,22 +107,14 @@ string Person::getSexLabel() {
     return(label);
 }
 
-/*
-CursedMenu& CursedMenu::operator=(const CursedMenu& cm) {
-    if (this != &cm) // make sure not same object
-    {
-        menuName = cm.menuName;
-        menuTitle = cm.menuTitle;
-        foreMenuColor = cm.foreMenuColor;
-        backMenuColor = cm.backMenuColor;
-        debugFlag = cm.debugFlag;
-
-        menuItems.clear();
-        for (int x=0; x < cm.menuItems.size(); x++)
-        {
-            menuItems.push_back(cm.menuItems.at(x));
-        }
-    }
-    return *this;    // Return ref for multiple assignment
+/**
+ * Overload the stream insertion operator (<<) to output the Person object using to_string().
+ *
+ * @param os The output stream.
+ * @param person The Person object to output.
+ * @return ostream The output stream with the Person object.
+ */
+ostream& operator<<(ostream& os, const Person& person) {
+    os << person.to_string();
+    return os;
 }
-*/

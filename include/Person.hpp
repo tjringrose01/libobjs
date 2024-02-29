@@ -64,9 +64,18 @@ public:
     Person();
     Person(string firstName, string middleName, string lastName, Address address, PhoneNumber phoneNumber, int sex, Dt birthdate, SSN ssn, EmailAddress email);
     ~Person();
-    String toString();
+    String to_string() const;
 
-    String getSexLabel();
+    String getSexLabel() const;
+
+    /**
+     * Overload the stream insertion operator (<<) to output the Person object using to_string().
+     *
+     * @param os The output stream.
+     * @param person The Person object to output.
+     * @return ostream The output stream with the Person object.
+     */
+    friend ostream& operator<<(ostream& os, const Person& person);
 };
 
 #endif

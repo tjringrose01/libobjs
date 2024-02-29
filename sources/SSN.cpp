@@ -90,6 +90,13 @@ using namespace std;
 #define MIN_SERIAL 0001
 #define MAX_SERIAL 9999
 
+/**
+ * Constructor for SSN with specified area number, group number, and serial number.
+ *
+ * @param areaNo The area number of the SSN.
+ * @param groupNo The group number of the SSN.
+ * @param serialNo The serial number of the SSN.
+ */
 SSN::SSN(string areaNo, string groupNo, string serialNo) {
     set_areaNo(areaNo);
 
@@ -97,6 +104,9 @@ SSN::SSN(string areaNo, string groupNo, string serialNo) {
     this->set_serialNo(serialNo);
 }
 
+/**
+ * Default constructor for SSN.
+ */
 SSN::SSN() {
     this->areaNo = "000";
     this->groupNo = "00";
@@ -104,12 +114,17 @@ SSN::SSN() {
 }
 
 /**
- * Housekeeping
+ * Destructor for SSN.
  */
 SSN::~SSN() {
 }
 
-string SSN::toString() {
+/**
+ * Convert the SSN object to a string representation.
+ *
+ * @return A string representing the SSN in the format areaNo-groupNo-serialNo.
+ */
+string SSN::to_string() const {
 
     string retString = "";
 
@@ -122,6 +137,12 @@ string SSN::toString() {
     return(retString);
 }
 
+/**
+ * Set the area number of the SSN object.
+ *
+ * @param areaNo The area number to set.
+ * @throws std::invalid_argument if the provided area number is invalid.
+ */
 void SSN::set_areaNo(string areaNo) {
     bool isValid = false;
 
@@ -140,6 +161,12 @@ void SSN::set_areaNo(string areaNo) {
         throw std::invalid_argument( "ERROR: received invalid value for areaNo" );
 }
 
+/**
+ * Set the group number of the SSN object.
+ *
+ * @param groupNo The group number to set.
+ * @throws std::invalid_argument if the provided group number is invalid.
+ */
 void SSN::set_groupNo(string groupNo) {
     bool isValid = false;
 
@@ -152,6 +179,12 @@ void SSN::set_groupNo(string groupNo) {
         throw std::invalid_argument( "ERROR: received invalid value for groupNo" );
 }
 
+/**
+ * Set the serial number of the SSN object.
+ *
+ * @param serialNo The serial number to set.
+ * @throws std::invalid_argument if the provided serial number is invalid.
+ */
 void SSN::set_serialNo(string serialNo) {
     bool isValid = false;
 
@@ -164,14 +197,62 @@ void SSN::set_serialNo(string serialNo) {
         throw std::invalid_argument( "ERROR: received invalid value for serialNo" );
 }
 
-string SSN::get_areaNo() {
+/**
+ * Get the area number of the SSN object.
+ *
+ * @return The area number of the SSN.
+ */
+string SSN::get_areaNo() const {
     return(this->areaNo);
 }
 
-string SSN::get_groupNo() {
+/**
+ * Get the group number of the SSN object.
+ *
+ * @return The group number of the SSN.
+ */
+string SSN::get_groupNo() const {
     return(this->groupNo);
 }
 
-string SSN::get_serialNo() {
+/**
+ * Get the serial number of the SSN object.
+ *
+ * @return The serial number of the SSN.
+ */
+string SSN::get_serialNo() const {
     return(this->serialNo);
 }
+
+/**
+ * Check if the SSN is equal to another SSN.
+ *
+ * @param other The other SSN to compare to.
+ * @return bool True if the SSNs are equal, false otherwise.
+ */
+bool SSN::IsEqualTo(const SSN& other) const {
+    return (this->areaNo == other.areaNo && this->groupNo == other.groupNo && this->serialNo == other.serialNo);
+}
+
+/**
+ * Overload the equality operator (==) to compare two SSNs using IsEqualTo member function.
+ *
+ * @param other The other SSN to compare to.
+ * @return bool True if the SSNs are equal, false otherwise.
+ */
+bool SSN::operator==(const SSN& other) const {
+    return (this->areaNo == other.areaNo && this->groupNo == other.groupNo && this->serialNo == other.serialNo);
+}
+
+/**
+ * Overload the stream insertion operator (<<) to output the SSN using to_string().
+ *
+ * @param os The output stream.
+ * @param ssn The SSN object to output.
+ * @return ostream The output stream with the SSN.
+ */
+ostream& operator<<(ostream& os, const SSN& ssn) {
+    os << ssn.to_string();
+    return os;
+}
+

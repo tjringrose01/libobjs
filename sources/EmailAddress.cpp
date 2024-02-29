@@ -105,10 +105,10 @@ void EmailAddress::set_domain(string email) {
 	int n = email.find("@");
 
 	if ( n == string::npos )
-		throw std::invalid_argument( "ERROR: received invalid value for email" );
+		throw std::invalid_argument( "ERROR: received invalid value for email - " + email );
 
 	if ( email.substr(n+1,email.length() - n).length() == 0 )
-		throw std::invalid_argument( "ERROR: received invalid value for email" );
+		throw std::invalid_argument( "ERROR: received invalid value for email - " + email );
 
 	this->domain = email.substr(n+1,email.length() - n);
 }

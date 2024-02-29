@@ -23,6 +23,7 @@
 #include <gtest/gtest.h>
 #include "PhoneNumber.hpp"
 #include "Dt.hpp"
+#include "EmailAddress.hpp"
 
 using namespace std;
 

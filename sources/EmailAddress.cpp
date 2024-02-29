@@ -47,14 +47,14 @@ EmailAddress::EmailAddress() {
  */
 EmailAddress::EmailAddress(string email) {
 	if ( email.length() > 254 )
-		throw invalid_argument( "ERROR: received invalid value for email" );
+		throw invalid_argument( "ERROR: received invalid value for email" + email );
 
 	size_t atPos = email.find("@");
 	if ( atPos == string::npos )
-		throw invalid_argument( "ERROR: received invalid value for email" );
+		throw invalid_argument( "ERROR: received invalid value for email" + email );
 
-	set_name(email.substr(0, atPos));
-	set_domain(email.substr(atPos + 1));
+	set_name(email);
+	set_domain(email);
 }
 
 /**
@@ -84,10 +84,10 @@ void EmailAddress::set_name(string email) {
 	int n = email.find("@");
 
 	if ( n == string::npos )
-		throw std::invalid_argument( "ERROR: received invalid value for email" );
+		throw std::invalid_argument( "ERROR: received invalid value for email" + email );
 
 	if ( email.substr(0,n).length() == 0 )
-		throw std::invalid_argument( "ERROR: received invalid value for email" );
+		throw std::invalid_argument( "ERROR: received invalid value for email" + email );
 
 	this->name = email.substr(0,n);
 

@@ -174,9 +174,9 @@ TEST(CompanyTest, CompanyInformation) {
 
     company.setCompanyName("ABC Inc.");
     company.setCompanyAddress(Address("123 Main St", "City", "State", "12345"));
-    company.setCompanyPhoneNumber(PhoneNumber("1", "555", "1234567"));
+    company.setCompanyPhoneNumber(PhoneNumber("1", "555", "123", "4567"));
     
-    Person contactPerson("John", "Doe", "Smith", Address("456 Elm St", "Town", "State", "54321"), PhoneNumber("1", "555", "7654321"), 0, Dt(1990, 1, 15), SSN("123-45-6789"), EmailAddress("john.doe@example.com"));
+    Person contactPerson("John", "Doe", "Smith", Address("456 Elm St", "Town", "State", "54321"), PhoneNumber("1", "555", "765", "4321"), 0, Dt(1990, 1, 15), SSN("123","45","6789"), EmailAddress("john.doe@example.com"));
     company.setPersonOfContact(contactPerson);
 
     EXPECT_EQ("ABC Inc.", company.getCompanyName());

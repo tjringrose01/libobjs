@@ -65,6 +65,16 @@ public:
     Address(string streetAddressLine1, string streetAddressLine2, string city, string state, string zipCode);
 
     /**
+     * Constructor for Address class that initializes the address with provided information.
+     *
+     * @param streetAddressLine1 The first line of the street address (string).
+     * @param city The city of the address (string).
+     * @param state The state of the address (string).
+     * @param zipCode The ZIP code of the address (string).
+     */
+    Address(string streetAddressLine1, string city, string state, string zipCode);
+
+    /**
      * Destructor for the Address class.
      */
     ~Address();

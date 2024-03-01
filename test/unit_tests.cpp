@@ -24,6 +24,7 @@
 #include "PhoneNumber.hpp"
 #include "Dt.hpp"
 #include "EmailAddress.hpp"
+#include "CurrencyAmount.hpp"
 
 using namespace std;
 
@@ -131,6 +132,41 @@ TEST(EmailAddressTest, SpecialCases) {
     EXPECT_THROW(EmailAddress("test@"), invalid_argument);
 }
 
+// Test for CurrencyAmount class
+TEST(CurrencyAmountTest, DoubleAmountComparison) {
+    CurrencyAmount amount1("USD", 10.5);
+    CurrencyAmount amount2("USD", 20.75);
+    CurrencyAmount amount3("USD", 10.5);
+
+    EXPECT_TRUE(amount2 > amount1);
+    EXPECT_TRUE(amount2 >= amount1);
+    EXPECT_FALSE(amount1 > amount2);
+    EXPECT_FALSE(amount1 >= amount2);
+    EXPECT_TRUE(amount1 >= amount3);
+    EXPECT_TRUE(amount1 == amount3);
+}
+
+TEST(CurrencyAmountTest, IntegerAmountComparison) {
+    CurrencyAmount amount1("EUR", 100);
+    CurrencyAmount amount2("EUR", 200);
+    CurrencyAmount amount3("EUR", 100);
+
+    EXPECT_TRUE(amount2 > amount1);
+    EXPECT_TRUE(amount2 >= amount1);
+    EXPECT_FALSE(amount1 > amount2);
+    EXPECT_FALSE(amount1 >= amount2);
+    EXPECT_TRUE(amount1 >= amount3);
+    EXPECT_TRUE(amount1 == amount3);
+}
+
+TEST(CurrencyAmountTest, OutputOperator) {
+    CurrencyAmount amount("GBP", 50);
+
+    stringstream ss;
+    ss << amount;
+
+    EXPECT_EQ("GBP 50", ss.str());
+}
 
 
 

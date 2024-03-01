@@ -25,6 +25,7 @@
 #include "Dt.hpp"
 #include "EmailAddress.hpp"
 #include "CurrencyAmount.hpp"
+#include "Company.hpp"
 
 using namespace std;
 
@@ -168,6 +169,23 @@ TEST(CurrencyAmountTest, OutputOperator) {
     EXPECT_EQ("50.00 GBP", ss.str());
 }
 
+TEST(CompanyTest, CompanyInformation) {
+    Company company;
+
+    company.setCompanyName("ABC Inc.");
+    company.setCompanyAddress(Address("123 Main St", "City", "State", "12345"));
+    company.setCompanyPhoneNumber(PhoneNumber("1", "555", "1234567"));
+    
+    Person contactPerson("John", "Doe", "Smith", Address("456 Elm St", "Town", "State", "54321"), PhoneNumber("1", "555", "7654321"), 0, Dt(1990, 1, 15), SSN("123-45-6789"), EmailAddress("john.doe@example.com"));
+    company.setPersonOfContact(contactPerson);
+
+    EXPECT_EQ("ABC Inc.", company.getCompanyName());
+    EXPECT_EQ("123 Main St, City, State, 12345", company.getCompanyAddress().to_string());
+    EXPECT_EQ("+15551234567", company.getCompanyPhoneNumber().toE164Format());
+    EXPECT_EQ("John Smith", company.getPersonOfContact().getName());
+    EXPECT_EQ("+15557654321", company.getPersonOfContact().getPhoneNumber().toE164Format());
+    EXPECT_EQ("john.doe@example.com", company.getPersonOfContact().getEmail().to_string());
+}
 
 
 int main(int argc, char **argv) {

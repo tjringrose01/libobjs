@@ -61,12 +61,65 @@ public:
     /* Public Members */
 
     /* Public Methods */
+    /**
+     * Default constructor for Person.
+     */
     Person();
+    
+    /**
+     * Constructor for Person with provided information.
+     *
+     * @param firstName The first name of the person (string).
+     * @param middleName The middle name of the person (string).
+     * @param lastName The last name of the person (string).
+     * @param address The address of the person (Address).
+     * @param phoneNumber The phone number of the person (PhoneNumber).
+     * @param sex The gender of the person (int).
+     * @param birthdate The birthdate of the person (Dt).
+     * @param ssn The social security number of the person (SSN).
+     * @param email The email address of the person (EmailAddress).
+     */
     Person(string firstName, string middleName, string lastName, Address address, PhoneNumber phoneNumber, int sex, Dt birthdate, SSN ssn, EmailAddress email);
+    
+    /**
+     * Destructor for Person.
+     */
     ~Person();
+    
+    /**
+     * Convert Person information to a string.
+     *
+     * @return A string representation of the Person.
+     */
     String to_string() const;
 
+    /**
+     * Get the full name of the person.
+     *
+     * @return The full name of the person.
+     */
+    string getName() const;
+
+    /**
+     * Get the label corresponding to the sex of the person.
+     *
+     * @return A string representing the sex label (Male, Female, or Unknown).
+     */
     String getSexLabel() const;
+
+    /**
+     * Get the email address of the person.
+     *
+     * @return The email address of the person.
+     */
+    EmailAddress getEmail() const;
+
+    /**
+     * Get the phone number of the person.
+     *
+     * @return The phone number of the person.
+     */
+    PhoneNumber getPhoneNumber() const;
 
     /**
      * Overload the stream insertion operator (<<) to output the Person object using to_string().

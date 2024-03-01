@@ -20,6 +20,7 @@ add_library(objs SHARED
 	sources/Address.cpp
 	sources/Person.cpp
 	sources/SSN.cpp
+  sources/Company.cpp
 )
 target_include_directories(objs PRIVATE ${INCLUDE_DIR})
 
@@ -42,6 +43,7 @@ add_executable(libobjs test/libobjs.cpp
 	include/Address.hpp
 	include/Person.hpp
 	include/SSN.hpp
+  include/Company.hpp
 	)
 target_link_libraries(libobjs PUBLIC objs)
 target_include_directories(libobjs PUBLIC ${INCLUDE_DIR})

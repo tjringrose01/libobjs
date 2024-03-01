@@ -108,6 +108,33 @@ string Person::getSexLabel() const {
 }
 
 /**
+ * Get the full name of the person.
+ *
+ * @return The full name of the person.
+ */
+string Person::getName() const {
+    return firstName + " " + lastName;
+}
+
+/**
+ * Get the email address of the person.
+ *
+ * @return The email address of the person.
+ */
+EmailAddress Person::getEmail() const {
+    return this->email;
+}
+
+/**
+ * Get the phone number of the person.
+ *
+ * @return The phone number of the person.
+ */
+PhoneNumber Person::getPhoneNumber() const {
+    return this->phoneNumber;
+}
+
+/**
  * Overload the stream insertion operator (<<) to output the Person object using to_string().
  *
  * @param os The output stream.

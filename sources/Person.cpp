@@ -31,6 +31,11 @@ using namespace std;
 #define PROGRAM "libobjs"
 
 /**
+ * Default constructor for the Person class.
+ */
+Person::Person() = default;
+
+/**
  * Constructor for the Person class that initializes the object with provided information.
  *
  * @param firstName The first name of the person (string).
@@ -54,9 +59,12 @@ Person::Person(string firstName, string middleName, string lastName, Address add
     this->ssn = ssn;
     this->email = email;
 }
+
+/**
+ * Destructor for the Person class.
+ */
 Person::~Person() {
 }
-
 /**
  * Method to convert the object into a string representation.
  *

@@ -165,7 +165,7 @@ TEST(CurrencyAmountTest, OutputOperator) {
     stringstream ss;
     ss << amount;
 
-    EXPECT_EQ("GBP 50", ss.str());
+    EXPECT_EQ("50.00 GBP", ss.str());
 }
 
 

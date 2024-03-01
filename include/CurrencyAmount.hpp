@@ -26,43 +26,153 @@
 
 #include <string>
 
+using namespace std;
+
 class CurrencyAmount {
 public:
-    // Constructor that takes in the currency code and amount
-    CurrencyAmount(const std::string& currency_code, double amount);
+    /**
+     * Constructor for CurrencyAmount.
+     *
+     * @param currency_code The currency code as a string.
+     * @param amount The amount as a double.
+     */
+    CurrencyAmount(const string& currency_code, double amount);
 
-    // Getter functions for the currency code and amount
-    std::string getCurrencyCode() const;
+    /**
+     * Constructor for CurrencyAmount with integer amount.
+     *
+     * @param currency_code The currency code as a string.
+     * @param amount The amount as an integer.
+     */
+    CurrencyAmount(const string& currency_code, int amount);
+
+    /**
+     * Get the currency code of the CurrencyAmount.
+     *
+     * @return The currency code as a string.
+     */
+    string getCurrencyCode() const;
+
+    /**
+     * Get the amount of the CurrencyAmount.
+     *
+     * @return The amount as a double.
+     */
     double getAmount() const;
 
-    // Setter functions for the currency code and amount
-    void setCurrencyCode(const std::string& currency_code);
+    /**
+     * Set the currency code of the CurrencyAmount.
+     *
+     * @param currency_code The currency code as a string.
+     */
+    void setCurrencyCode(const string& currency_code);
+
+    /**
+     * Set the amount of the CurrencyAmount.
+     *
+     * @param amount The amount as a double.
+     */
     void setAmount(double amount);
 
-    // Adds Tax to the CurrencyAmount
+    /**
+     * Add tax to the CurrencyAmount.
+     *
+     * @param tax The tax amount to add.
+     */
     void addTax(double tax);
 
-    // Return Tax amount from the CurrencyAmount
-    double getTax(double tax);
+    /**
+     * Get the tax amount from the CurrencyAmount.
+     *
+     * @param tax The tax amount to calculate.
+     * @return The calculated tax amount.
+     */
+    double calculateTax(float tax);
 
-    // Function to convert the currency amount to a string
-    std::string toString() const;
+    /**
+     * Convert the currency amount to a string representation.
+     *
+     * @return The currency amount as a string.
+     */
+    string to_string() const;
 
-    // Overloaded operators for addition and subtraction
+    /**
+     * Overloaded operator for addition of CurrencyAmount objects.
+     *
+     * @param other The CurrencyAmount object to add.
+     * @return The result of adding this object with the other object.
+     */
     CurrencyAmount operator+(const CurrencyAmount& other) const;
+
+    /**
+     * Overloaded operator for subtraction of CurrencyAmount objects.
+     *
+     * @param other The CurrencyAmount object to subtract.
+     * @return The result of subtracting the other object from this object.
+     */
     CurrencyAmount operator-(const CurrencyAmount& other) const;
 
     // Overloaded comparison operators
+    /**
+     * Overloaded equality operator for comparing CurrencyAmount objects.
+     *
+     * @param other The CurrencyAmount object to compare with.
+     * @return True if the objects are equal, false otherwise.
+     */
     bool operator==(const CurrencyAmount& other) const;
+
+    /**
+     * Overloaded inequality operator for comparing CurrencyAmount objects.
+     *
+     * @param other The CurrencyAmount object to compare with.
+     * @return True if the objects are not equal, false otherwise.
+     */
     bool operator!=(const CurrencyAmount& other) const;
+
+    /**
+     * Overloaded less than operator for comparing CurrencyAmount objects.
+     *
+     * @param other The CurrencyAmount object to compare with.
+     * @return True if this object is less than the other object, false otherwise.
+     */
     bool operator<(const CurrencyAmount& other) const;
+
+    /**
+     * Overloaded less than or equal to operator for comparing CurrencyAmount objects.
+     *
+     * @param other The CurrencyAmount object to compare with.
+     * @return True if this object is less than or equal to the other object, false otherwise.
+     */
     bool operator<=(const CurrencyAmount& other) const;
+
+    /**
+     * Overloaded greater than operator for comparing CurrencyAmount objects.
+     *
+     * @param other The CurrencyAmount object to compare with.
+     * @return True if this object is greater than the other object, false otherwise.
+     */
     bool operator>(const CurrencyAmount& other) const;
+
+    /**
+     * Overloaded greater than or equal to operator for comparing CurrencyAmount objects.
+     *
+     * @param other The CurrencyAmount object to compare with.
+     * @return True if this object is greater than or equal to the other object, false otherwise.
+     */
     bool operator>=(const CurrencyAmount& other) const;
+
+    /**
+     * Overloaded stream insertion operator for outputting CurrencyAmount objects.
+     *
+     * @param os The output stream.
+     * @param amount The CurrencyAmount object to output.
+     * @return The output stream with the CurrencyAmount object printed.
+     */
+    friend ostream& operator<<(ostream& os, const CurrencyAmount& amount);
 
 private:
     // Member variables for the currency code and amount
-    std::string currency_code_;
+    string currency_code_;
     double amount_;
 };
 

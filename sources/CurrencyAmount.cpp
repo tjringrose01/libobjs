@@ -26,110 +26,223 @@
 #include <iomanip>
 #include <cmath>
 
-CurrencyAmount::CurrencyAmount(const std::string& currency_code, double amount)
+using namespace std;
+
+/**
+ * Constructor for CurrencyAmount with a double amount.
+ *
+ * @param currency_code The currency code as a string.
+ * @param amount The amount as a double.
+ */
+CurrencyAmount::CurrencyAmount(const string& currency_code, double amount)
     : currency_code_(currency_code), amount_(amount) {}
 
-std::string CurrencyAmount::getCurrencyCode() const {
+/**
+ * Constructor for CurrencyAmount with an integer amount.
+ *
+ * @param currency_code The currency code as a string.
+ * @param amount The amount as an integer.
+ */
+CurrencyAmount::CurrencyAmount(const string& currency_code, int amount)
+    : currency_code_(currency_code), amount_(amount) {}
+
+/**
+ * Get the currency code of the CurrencyAmount.
+ *
+ * @return The currency code as a string.
+ */
+string CurrencyAmount::getCurrencyCode() const {
     return currency_code_;
 }
 
+/**
+ * Get the amount of the CurrencyAmount.
+ *
+ * @return The amount as a double.
+ */
 double CurrencyAmount::getAmount() const {
     return amount_;
 }
 
-void CurrencyAmount::setCurrencyCode(const std::string& currency_code) {
+/**
+ * Set the currency code of the CurrencyAmount.
+ *
+ * @param currency_code The currency code as a string.
+ */
+void CurrencyAmount::setCurrencyCode(const string& currency_code) {
     currency_code_ = currency_code;
 }
 
+/**
+ * Set the amount of the CurrencyAmount.
+ *
+ * @param amount The amount as a double.
+ */
 void CurrencyAmount::setAmount(double amount) {
     amount_ = amount;
 }
 
-// Get tax from the amount
-double CurrencyAmount::getTax(double tax) {
+
+/**
+ * Calculate the tax amount based on the given tax rate.
+ *
+ * @param tax The tax rate to apply (float).
+ * @return The calculated tax amount (double).
+ */
+double CurrencyAmount::calculateTax(float tax) {
 	double _tax = ceil(this->amount_ * tax * 100 ) / 100;
 	return _tax;
 }
 
-// Add tax to the amount
+/**
+ * Add tax amount to the current amount.
+ *
+ * @param tax The tax amount to add (double).
+ */
 void CurrencyAmount::addTax(double tax) {
 	double _tax = (this->amount_ * tax) + .005;
 	this->amount_ += _tax;
 }
 
-std::string CurrencyAmount::toString() const {
+/**
+ * Convert the CurrencyAmount object to a string representation.
+ *
+ * @return The string representation of the CurrencyAmount.
+ */
+string CurrencyAmount::to_string() const {
     // Use a stringstream to build the string representation of the currency amount
-    std::ostringstream oss;
-    oss << std::fixed << std::setprecision(2) << amount_ << " " << currency_code_;
+    ostringstream oss;
+    oss << fixed << setprecision(2) << amount_ << " " << currency_code_;
     return oss.str();
 }
 
+/**
+ * Overloaded operator for addition of CurrencyAmount objects.
+ *
+ * @param other The CurrencyAmount object to add (const CurrencyAmount&).
+ * @return The result of adding this object with the other object (CurrencyAmount).
+ */
 CurrencyAmount CurrencyAmount::operator+(const CurrencyAmount& other) const {
     // Make sure the currency codes match
     if (currency_code_ != other.currency_code_) {
-        throw std::invalid_argument("Currency codes do not match.");
+        throw invalid_argument("Currency codes do not match.");
     }
 
     // Add the amounts together and return a new CurrencyAmount object
     return CurrencyAmount(currency_code_, amount_ + other.amount_);
 }
 
+/**
+ * Overloaded operator for subtraction of CurrencyAmount objects.
+ *
+ * @param other The CurrencyAmount object to subtract (const CurrencyAmount&).
+ * @return The result of subtracting the other object from this object (CurrencyAmount).
+ */
 CurrencyAmount CurrencyAmount::operator-(const CurrencyAmount& other) const {
     // Make sure the currency codes match
     if (currency_code_ != other.currency_code_) {
-        throw std::invalid_argument("Currency codes do not match.");
+        throw invalid_argument("Currency codes do not match.");
     }
 
     // Subtract the other amount from this amount and return a new CurrencyAmount object
     return CurrencyAmount(currency_code_, amount_ - other.amount_);
 }
 
+/**
+ * Check if this CurrencyAmount object is equal to another CurrencyAmount object.
+ *
+ * @param other The other CurrencyAmount object to compare with (const CurrencyAmount&).
+ * @return True if the objects are equal, false otherwise.
+ */
 bool CurrencyAmount::operator==(const CurrencyAmount& other) const {
     // Two currency amounts are equal if they have the same currency code and amount
     return (currency_code_ == other.currency_code_) && (amount_ == other.amount_);
 }
 
+/**
+ * Check if this CurrencyAmount object is not equal to another CurrencyAmount object.
+ *
+ * @param other The other CurrencyAmount object to compare with (const CurrencyAmount&).
+ * @return True if the objects are not equal, false otherwise.
+ */
 bool CurrencyAmount::operator!=(const CurrencyAmount& other) const {
     // Two currency amounts are not equal if they do not have the same currency code or amount
     return !(*this == other);
 }
 
+/**
+ * Check if this CurrencyAmount object is less than another CurrencyAmount object.
+ *
+ * @param other The other CurrencyAmount object to compare with (const CurrencyAmount&).
+ * @return True if this object is less than the other object, false otherwise.
+ */
 bool CurrencyAmount::operator<(const CurrencyAmount& other) const {
     // We can only compare currency amounts with the same currency code
     if (currency_code_ != other.currency_code_) {
-        throw std::invalid_argument("Currency codes do not match.");
+        throw invalid_argument("Currency codes do not match.");
     }
 
     // Compare the amounts
     return amount_ < other.amount_;
 }
 
+/**
+ * Check if this CurrencyAmount object is less than or equal to another CurrencyAmount object.
+ *
+ * @param other The other CurrencyAmount object to compare with (const CurrencyAmount&).
+ * @return True if this object is less than or equal to the other object, false otherwise.
+ */
 bool CurrencyAmount::operator<=(const CurrencyAmount& other) const {
     // We can only compare currency amounts with the same currency code
     if (currency_code_ != other.currency_code_) {
-        throw std::invalid_argument("Currency codes do not match.");
+        throw invalid_argument("Currency codes do not match.");
     }
 
     // Compare the amounts
     return amount_ <= other.amount_;
 }
 
+/**
+ * Check if this CurrencyAmount object is greater than another CurrencyAmount object.
+ *
+ * @param other The other CurrencyAmount object to compare with (const CurrencyAmount&).
+ * @return True if this object is greater than the other object, false otherwise.
+ */
 bool CurrencyAmount::operator>(const CurrencyAmount& other) const {
     // We can only compare currency amounts with the same currency code
     if (currency_code_ != other.currency_code_) {
-        throw std::invalid_argument("Currency codes do not match.");
+        throw invalid_argument("Currency codes do not match.");
     }
 
     // Compare the amounts
     return amount_ > other.amount_;
 }
 
+/**
+ * Check if this CurrencyAmount object is greater than or equal to another CurrencyAmount object.
+ *
+ * @param other The other CurrencyAmount object to compare with (const CurrencyAmount&).
+ * @return True if this object is greater than or equal to the other object, false otherwise.
+ */
 bool CurrencyAmount::operator>=(const CurrencyAmount& other) const {
     // We can only compare currency amounts with the same currency code
     if (currency_code_ != other.currency_code_) {
-        throw std::invalid_argument("Currency codes do not match.");
+        throw invalid_argument("Currency codes do not match.");
     }
 
     // Compare the amounts
     return amount_ >= other.amount_;
 }
+
+/**
+ * Overloaded stream insertion operator for outputting CurrencyAmount objects.
+ *
+ * @param os The output stream.
+ * @param amount The CurrencyAmount object to output.
+ * @return The output stream with the CurrencyAmount object printed.
+ */
+ostream& operator<<(ostream& os, const CurrencyAmount& amount) {
+    os << amount.to_string();
+    return os;
+}
+

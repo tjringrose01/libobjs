@@ -15,7 +15,15 @@ pipeline {
             steps {
                 sh '''
                 cmake .
-                make
+                cmake --build .
+                '''
+            }
+        }
+
+        stage("SAST") {
+            steps {
+                sh '''
+                    cppcheck --enable=all --inconclusive --library=posix include/ sources/ test/ bin/
                 '''
             }
         }

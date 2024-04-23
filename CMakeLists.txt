@@ -22,6 +22,7 @@ add_library(objs SHARED
 	sources/SSN.cpp
   sources/Company.cpp
   sources/InvoiceItem.cpp
+  sources/Invoice.cpp
 )
 target_include_directories(objs PRIVATE ${INCLUDE_DIR})
 

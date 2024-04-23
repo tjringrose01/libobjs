@@ -28,8 +28,15 @@
 
 using namespace std;
 
+#define DEFAULT_CURRENCY_CODE "USD"
+
 class CurrencyAmount {
 public:
+    /**
+     * Default Constructor for CurrencyAmount.
+     */
+    CurrencyAmount();
+
     /**
      * Constructor for CurrencyAmount.
      *
@@ -45,6 +52,20 @@ public:
      * @param amount The amount as an integer.
      */
     CurrencyAmount(const string& currency_code, int amount);
+
+    /**
+     * Constructor for CurrencyAmount with integer amount and default to 'USD'.
+     *
+     * @param amount The amount as an int.
+     */
+    CurrencyAmount(int amount);
+
+    /**
+     * Constructor for CurrencyAmount with double amount and default to 'USD'.
+     *
+     * @param amount The amount as a double.
+     */
+    CurrencyAmount(double amount);
 
     /**
      * Get the currency code of the CurrencyAmount.
@@ -111,6 +132,17 @@ public:
      * @return The result of subtracting the other object from this object.
      */
     CurrencyAmount operator-(const CurrencyAmount& other) const;
+
+    /**
+     * Overloaded operator for subtraction of CurrencyAmount objects.
+     *
+     * @param other The CurrencyAmount object to subtract.
+     * @return The result of subtracting the other object from this object.
+     */
+    //CurrencyAmount operator*(const int& other) const;
+
+    //CurrencyAmount operator* (const int other, const CurrencyAmount& amt ) const; 
+    CurrencyAmount operator* (const int& other) const;
 
     // Overloaded comparison operators
     /**

@@ -34,6 +34,17 @@ using namespace std;
  * @param currency_code The currency code as a string.
  * @param amount The amount as a double.
  */
+CurrencyAmount::CurrencyAmount() {
+    this->currency_code_ = DEFAULT_CURRENCY_CODE;
+    this->amount_ = 0;
+}
+
+/**
+ * Constructor for CurrencyAmount with a double amount.
+ *
+ * @param currency_code The currency code as a string.
+ * @param amount The amount as a double.
+ */
 CurrencyAmount::CurrencyAmount(const string& currency_code, double amount)
     : currency_code_(currency_code), amount_(amount) {}
 
@@ -45,6 +56,26 @@ CurrencyAmount::CurrencyAmount(const string& currency_code, double amount)
  */
 CurrencyAmount::CurrencyAmount(const string& currency_code, int amount)
     : currency_code_(currency_code), amount_(amount) {}
+
+/**
+  * Constructor for CurrencyAmount with integer amount and default to 'USD'.
+  *
+  * @param amount The amount as an int.
+  */
+CurrencyAmount::CurrencyAmount(int amount) {
+    amount_ = amount;
+    currency_code_ = "USD";
+}
+
+/**
+  * Constructor for CurrencyAmount with double amount and default to 'USD'.
+  *
+  * @param amount The amount as a double.
+  */
+CurrencyAmount::CurrencyAmount(double amount) {
+    amount_ = amount;
+    currency_code_ = "USD";
+}
 
 /**
  * Get the currency code of the CurrencyAmount.
@@ -146,6 +177,16 @@ CurrencyAmount CurrencyAmount::operator-(const CurrencyAmount& other) const {
 
     // Subtract the other amount from this amount and return a new CurrencyAmount object
     return CurrencyAmount(currency_code_, amount_ - other.amount_);
+}
+
+/**
+ * Overloaded operator for multiplication of CurrencyAmount objects with an integer.
+ *
+ * @param other The integer value to multiply with (const int&).
+ * @return The result of multiplying this object with the integer value (CurrencyAmount).
+ */
+CurrencyAmount CurrencyAmount::operator*(const int& other) const {
+    return CurrencyAmount(currency_code_, amount_ * other);
 }
 
 /**

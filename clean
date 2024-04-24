@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "Cleaning ./build"
+rm -rf build/*
+
+echo "Cleaning CMakeUserPresets.json"
+rm -rf CMakeUserPresets.json

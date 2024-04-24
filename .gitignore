@@ -65,3 +65,4 @@ build/*
 
 settings.json
 build.ninja
+CMakeUserPresets.json

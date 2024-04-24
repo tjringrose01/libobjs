@@ -12,19 +12,11 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 #set(INCLUDE_DIR ${CMAKE_BINARY_DIR}/include)
 set(INCLUDE_DIR include)
 
-add_library(objs SHARED
-	sources/Dt.cpp
-	sources/PhoneNumber.cpp
-	sources/CurrencyAmount.cpp
-	sources/EmailAddress.cpp
-	sources/Address.cpp
-	sources/Person.cpp
-	sources/SSN.cpp
-  sources/Company.cpp
-  sources/InvoiceItem.cpp
-  sources/Invoice.cpp
-)
-target_include_directories(objs PRIVATE ${INCLUDE_DIR})
+### Make sure that required dependencies are found
+find_package(OpenSSL REQUIRED)
+
+### Go to sources dir and build the objs library
+add_subdirectory(sources)
 
 ### dates executable
 add_executable(dates test/dates.cpp include/Dt.hpp)

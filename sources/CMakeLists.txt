@@ -18,5 +18,5 @@ target_include_directories(objs PRIVATE
     ../include
 )
 
-target_link_libraries(objs openssl::openssl)
+target_link_libraries(objs cryptopp::cryptopp)
 

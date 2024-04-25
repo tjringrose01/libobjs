@@ -1,6 +1,6 @@
 [requires]
 gtest/1.14.0
-openssl/3.2.1
+cryptopp/8.9.0
 
 [tool_requires]
 cmake/3.29.2

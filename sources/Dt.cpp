@@ -55,9 +55,12 @@ Dt::Dt(const int& year, const int& month, const int& day) {
 /**
  * This is the default constructor for the Dt class.
  * It is called when a new date object is created without any parameters.
- * Currently, it does not perform any specific initialization tasks.
  */
-Dt::Dt() = default;
+Dt::Dt() {
+    set_year(1900);
+    set_month(1);
+    set_day(1);
+}
 
 /**
  * This is the destructor for the Dt class.

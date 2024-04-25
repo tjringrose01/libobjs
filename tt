@@ -14,4 +14,6 @@ source ./Release/generators/conanbuild.sh
 
 cmake --build .
 
+ctest --test-dir test
+
 source ./Release/generators/deactivate_conanbuild.sh

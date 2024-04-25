@@ -92,5 +92,3 @@ string Company::to_string() const {
 
     return companyInfo;
 }
-
-

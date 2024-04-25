@@ -13,7 +13,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(INCLUDE_DIR include)
 
 ### Make sure that required dependencies are found
-find_package(cryptopp REQUIRED)
+#find_package(cryptopp REQUIRED)
 
 ### Go to sources dir and build the objs library
 add_subdirectory(sources)

@@ -1,6 +1,5 @@
 [requires]
 gtest/1.14.0
-cryptopp/8.9.0
 
 [tool_requires]
 cmake/3.29.2

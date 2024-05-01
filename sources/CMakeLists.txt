@@ -10,6 +10,7 @@ add_library(objs SHARED
     InvoiceItem.cpp
     Invoice.cpp
     User.cpp
+    Meal.cpp
 )
 
 target_include_directories(objs PRIVATE

@@ -102,5 +102,5 @@ string Company::to_string() const {
         return companyName == other.getCompanyName() &&
                companyAddress == other.getCompanyAddress() &&
                companyPhoneNumber == other.getCompanyPhoneNumber() &&
-               poc == other.getPersonOfContact();
+               other.getPersonOfContact() == poc;
     }

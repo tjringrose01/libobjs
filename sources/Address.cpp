@@ -209,7 +209,7 @@ bool Address::isEqualTo(const Address& other) const {
  * @param other The other Address object to compare to.
  * @return bool True if the Address objects are equal, false otherwise.
  */
-bool Address::operator==(const Address& other) {
+bool Address::operator==(const Address& other) const {
     return isEqualTo(other);
 }
 

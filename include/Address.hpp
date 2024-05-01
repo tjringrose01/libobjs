@@ -170,7 +170,7 @@ public:
      * @param other The other Address object to compare to.
      * @return bool True if the Address objects are equal, false otherwise.
      */
-    bool operator==(const Address& other);
+    bool operator==(const Address& other) const;
     
     /**
      * Overload the stream insertion operator (<<) to output the address in a formatted manner.

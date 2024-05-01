@@ -92,3 +92,15 @@ string Company::to_string() const {
 
     return companyInfo;
 }
+
+/**
+     * Overload the equality operator to compare two Company objects.
+     * @param other The Company object to compare with
+     * @return True if the Company objects are equal, false otherwise
+     */
+    bool Company::operator==(const Company& other) const {
+        return companyName == other.getCompanyName() &&
+               companyAddress == other.getCompanyAddress() &&
+               companyPhoneNumber == other.getCompanyPhoneNumber() &&
+               poc == other.getPersonOfContact();
+    }

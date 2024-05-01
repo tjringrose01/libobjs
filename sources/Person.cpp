@@ -143,6 +143,24 @@ PhoneNumber Person::getPhoneNumber() const {
 }
 
 /**
+ * Overload the equality operator (==) to check if two Person objects are equal.
+ *
+ * @param other The other Person object to compare to.
+ * @return bool True if the Person objects are equal, false otherwise.
+ */
+bool Person::operator==(const Person& other) const {
+    return (this->firstName == other.firstName &&
+            this->middleName == other.middleName &&
+            this->lastName == other.lastName &&
+            this->address == other.address &&
+            this->phoneNumber == other.phoneNumber &&
+            this->sex == other.sex &&
+            this->birthdate == other.birthdate &&
+            this->ssn == other.ssn &&
+            this->email == other.email);
+}
+
+/**
  * Overload the stream insertion operator (<<) to output the Person object using to_string().
  *
  * @param os The output stream.

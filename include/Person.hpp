@@ -122,6 +122,14 @@ public:
     PhoneNumber getPhoneNumber() const;
 
     /**
+     * Overload the equality operator (==) to check if two Person objects are equal.
+     *
+     * @param other The other Person object to compare to.
+     * @return bool True if the Person objects are equal, false otherwise.
+     */
+    bool operator==(const Person& other) const;
+
+    /**
      * Overload the stream insertion operator (<<) to output the Person object using to_string().
      *
      * @param os The output stream.

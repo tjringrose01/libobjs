@@ -43,8 +43,13 @@ int main(int argc, char** argv) {
     cout << "Absolute Path: " << file.getAbsolutePath() << endl;
     cout << "Filename: " << file.getName() << endl;
     cout << "Path: " << file.getPath() << endl;
-    cout << "Exists: " << file.exists() << endl;
-    cout << "Size: " << file.getSize() << endl;
+    if ( file.exists() ) {
+        cout << "Exists: " << "True" << endl;
+        cout << "Size: " << file.getSize() << endl;
+    } else {
+        cout << "Exists: " << "False" << endl;
+        cout << "Size: " << "n/a" << endl;
+    }
 
     return 0;
 }

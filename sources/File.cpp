@@ -92,7 +92,7 @@ std::string File::getPathFromAbsolutePath(string fileName) {
     size_t separatorPos = fileName.find_last_of("/\\");
     if (separatorPos != std::string::npos) {
         // Extract the path and filename
-        path = fileName.substr(0, separatorPos + 1); // Include the separator in the path
+        path = fileName.substr(0, separatorPos); // Include the separator in the path
     } else {
         // No path separator found, consider the entire string as the filename
         path = "";

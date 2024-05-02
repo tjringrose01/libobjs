@@ -46,9 +46,11 @@ int main(int argc, char** argv) {
     if ( file.exists() ) {
         cout << "Exists: " << "True" << endl;
         cout << "Size: " << file.getSize() << endl;
+        cout << "MD5: " << file.getMD5() << endl;
     } else {
         cout << "Exists: " << "False" << endl;
         cout << "Size: " << "n/a" << endl;
+        cout << "MD5: " << "n/a" << endl;
     }
 
     return 0;

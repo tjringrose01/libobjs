@@ -12,6 +12,7 @@ add_library(objs SHARED
     User.cpp
     Meal.cpp
     File.cpp
+    MD5.cpp
 )
 
 target_include_directories(objs PRIVATE

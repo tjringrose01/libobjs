@@ -2,6 +2,7 @@
 #define FILE_HPP
 
 #include <string>
+#include "MD5.hpp"
 
 using namespace std;
 
@@ -59,6 +60,13 @@ public:
      * @return True if the file exists, false otherwise.
      */
     bool exists() const;
+
+    /**
+     * Get the MD5 hash of the file.
+     * 
+     * @return The MD5 hash of the file.
+     */
+    string getMD5() const;
 
 private:
     std::string name; /**< The name of the file. */

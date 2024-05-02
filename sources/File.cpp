@@ -1,6 +1,7 @@
 #include <string>
 #include <fstream>
 #include "File.hpp"
+#include "MD5.hpp"
 
 using namespace std;
 
@@ -79,6 +80,18 @@ bool File::exists() const {
 size_t File::getSize() const {
     ifstream in(getAbsolutePath(), ifstream::ate | ifstream::binary);
     return in.tellg();
+}
+
+/**
+ * Get the MD5 hash of the file.
+ * 
+ * @return The MD5 hash of the file.
+ */
+string File::getMD5() const {
+    MD5 md5;
+    string md5_hash = md5.calculate(getAbsolutePath());
+    
+    return md5_hash;
 }
 
 /**

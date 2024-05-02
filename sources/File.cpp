@@ -49,7 +49,12 @@ std::string File::getPath() const {
  * @return The absolute path of the file.
  */
 std::string File::getAbsolutePath() const {
-    return path + "/" + name;
+    // Check for trailing slash
+    if ( path.substr(path.length() - 1, 1) == "/" ) {
+        return path + name;
+    } else {
+        return path + "/" + name;
+    }
 }
 
 /**
@@ -91,8 +96,12 @@ std::string File::getPathFromAbsolutePath(string fileName) {
 
     size_t separatorPos = fileName.find_last_of("/\\");
     if (separatorPos != std::string::npos) {
-        // Extract the path and filename
-        path = fileName.substr(0, separatorPos); // Include the separator in the path
+        // If the path is "/" or "\", else drop the trailing slash
+        if ( fileName.substr(0, separatorPos + 1).length() == 1 ) {
+            path = fileName.substr(0, separatorPos + 1);
+        } else {
+            path = fileName.substr(0, separatorPos); // Include the separator in the path
+        }
     } else {
         // No path separator found, consider the entire string as the filename
         path = "";

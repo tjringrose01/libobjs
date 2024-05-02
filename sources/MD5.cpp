@@ -2,6 +2,8 @@
 #include <fstream>
 #include <sstream>
 #include <iomanip>
+#include <string>
+#include <cstring>
 #include "MD5.hpp"
 
 MD5::MD5() {

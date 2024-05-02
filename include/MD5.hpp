@@ -1,3 +1,6 @@
+#ifndef __MD5__
+#define __MD5__
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -37,3 +40,5 @@ int main() {
     return 0;
 }
 */
+
+#endif /* MD5 */

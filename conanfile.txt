@@ -1,5 +1,6 @@
 [requires]
 gtest/1.14.0
+cxxopts/3.2.0
 
 [tool_requires]
 cmake/3.29.2

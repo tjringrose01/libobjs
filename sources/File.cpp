@@ -1,4 +1,5 @@
 #include <string>
+#include <fstream>
 #include "File.hpp"
 
 using namespace std;
@@ -18,8 +19,10 @@ File::File(const std::string& name, const std::string& path) : name(name), path(
  */
 File::File(const std::string& name) {
     // Determin filename
+    this->name = getNameFromAbsolutePath(name);
 
     // Determine path
+    this->path = getPathFromAbsolutePath(name);
 }
 
 /**
@@ -50,13 +53,27 @@ std::string File::getAbsolutePath() const {
 }
 
 /**
+ * Check if the file exists.
+ * 
+ * @return True if the file exists, false otherwise.
+ */
+bool File::exists() const {
+    // Implement this
+    // Check if the file exists
+    // Return true if the file exists, false otherwise
+    // For now, return false as a placeholder
+    ifstream f(getAbsolutePath().c_str());
+    return f.good();
+}
+
+/**
  * Get the size of the file.
  * 
  * @return The size of the file.
  */
 size_t File::getSize() const {
-    // Implement this
-    return 0; // Placeholder, replace with actual implementation
+    ifstream in(getAbsolutePath(), ifstream::ate | ifstream::binary);
+    return in.tellg();
 }
 
 /**

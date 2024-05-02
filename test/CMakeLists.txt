@@ -1,3 +1,11 @@
+
+find_package(cxxopts)
+
+### file binary
+add_executable(file file.cpp)
+target_link_libraries(file objs cxxopts::cxxopts)
+target_include_directories(file PUBLIC ../include)
+
 find_package(GTest REQUIRED)
 
 enable_testing()

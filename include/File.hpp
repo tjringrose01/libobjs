@@ -53,6 +53,13 @@ public:
      */
     size_t getSize() const;
 
+    /**
+     * Check if the file exists.
+     * 
+     * @return True if the file exists, false otherwise.
+     */
+    bool exists() const;
+
 private:
     std::string name; /**< The name of the file. */
     std::string path; /**< The path of the file. */

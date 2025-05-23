@@ -8,7 +8,7 @@ conan install . --output-folder=. --build=missing
 
 ### in build folder
 cd build
-cmake .. -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE=/home/timr/libobjs/build/Release/generators/conan_toolchain.cmake -DCMAKE_POLICY_DEFAULT_CMP0091=NEW -DCMAKE_BUILD_TYPE=Release
+cmake .. -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE=/home/timr/dev/libobjs/build/Release/generators/conan_toolchain.cmake -DCMAKE_POLICY_DEFAULT_CMP0091=NEW -DCMAKE_BUILD_TYPE=Release
 
 source ./Release/generators/conanbuild.sh
 

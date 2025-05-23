@@ -28,7 +28,7 @@ pipeline {
             steps {
                 sh '''
                 #bin/conan install . --output-folder=. --build=missing
-                tt
+                ./tt
                 #cd build
                 #cmake .. -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE="`pwd`/Release/generators/conan_toolchain.cmake" -DCMAKE_POLICY_DEFAULT_CMP0091=NEW -DCMAKE_BUILD_TYPE=Release
                 #source ./Release/generators/conanbuild.sh

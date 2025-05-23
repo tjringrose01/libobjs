@@ -30,7 +30,7 @@ pipeline {
                 bin/conan install . --output-folder=. --build=missing
 
                 cd build
-                cmake .. -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE=`pwd`/Release/generators/conan_toolchain.cmake -DCMAKE_POLICY_DEFAULT_CMP0091=NEW -DCMAKE_BUILD_TYPE=Release
+                cmake .. -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE="`pwd`/Release/generators/conan_toolchain.cmake" -DCMAKE_POLICY_DEFAULT_CMP0091=NEW -DCMAKE_BUILD_TYPE=Release
                 source ./Release/generators/conanbuild.sh
                 cmake --build .
                 source ./Release/generators/deactivate_conanbuild.sh

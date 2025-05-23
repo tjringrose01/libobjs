@@ -28,18 +28,18 @@ pipeline {
         stage("SAST") {
             steps {
                 sh '''
-                    #cppcheck --enable=all --inconclusive --library=posix include/ sources/ test/ bin/
+                    
                 '''
             }
         }
 
         stage("Tests") {
             steps {
-                #echo "Tests"
-                #sh "bin/unit_tests"
+                sh '''
                 source ./Release/generators/deactivate_conanbuild.sh
                 ctest --test-dir test
                 source ./Release/generators/deactivate_conanbuild.sh
+                '''
             }
         }
     }

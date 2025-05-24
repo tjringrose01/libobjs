@@ -7,7 +7,11 @@
 export PATH=${PATH}:"`pwd`/bin"
 
 ### in build folder
-mkdir build && cd build
+if [ ! -d "./build" ]; then
+	mkdir build
+fi
+
+cd build
 
 echo "Installing Conan..."
 conan install .. --build=missing

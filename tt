@@ -13,11 +13,14 @@ conan install . --output-folder=. --build=missing
 ### in build folder
 cd build
 
+echo "Setting up environment..."
+source ./Release/generators/conanbuild.sh
+
 echo "Executing cmake in \'`pwd`\'..."
 cmake .. -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE="`pwd`/Release/generators/conan_toolchain.cmake" -DCMAKE_POLICY_DEFAULT_CMP0091=NEW -DCMAKE_BUILD_TYPE=Release
 
-echo "Setting up environment..."
-source ./Release/generators/conanbuild.sh
+#echo "Setting up environment..."
+#source ./Release/generators/conanbuild.sh
 
 echo "Executing cmake --build in \'`pwd`\'..."
 cmake --build .

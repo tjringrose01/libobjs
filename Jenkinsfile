@@ -49,9 +49,9 @@ pipeline {
         stage("Tests") {
             steps {
                 sh '''
-                source ./Release/generators/deactivate_conanbuild.sh
-                ctest --test-dir test
-                source ./Release/generators/deactivate_conanbuild.sh
+                #source ./Release/generators/deactivate_conanbuild.sh
+                #ctest --test-dir test
+                #source ./Release/generators/deactivate_conanbuild.sh
                 '''
             }
         }

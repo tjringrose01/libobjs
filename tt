@@ -6,12 +6,11 @@
 
 export PATH=${PATH}:"`pwd`/bin"
 
-### In project root folder
-echo "Installing Conan..."
-conan install . --output-folder=. --build=missing
-
 ### in build folder
-cd build
+mkdir build && cd build
+
+echo "Installing Conan..."
+conan install .. --build=missing
 
 echo "Setting up environment..."
 source ./Release/generators/conanbuild.sh

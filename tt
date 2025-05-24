@@ -7,19 +7,22 @@
 export PATH=${PATH}:"`pwd`/bin"
 
 ### in build folder
-mkdir build && cd build
+if [ ! -d "./build" ]; then
+	mkdir build
+fi
+
+cd build
 
 echo "Installing Conan..."
 conan install .. --build=missing
-
-echo "Setting up environment..."
-source ./Release/generators/conanbuild.sh
 
 echo "Executing cmake in \'`pwd`\'..."
 cmake .. -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE="`pwd`/Release/generators/conan_toolchain.cmake" -DCMAKE_POLICY_DEFAULT_CMP0091=NEW -DCMAKE_BUILD_TYPE=Release
 
 #echo "Setting up environment..."
 #source ./Release/generators/conanbuild.sh
+echo "Setting up environment..."
+source ./Release/generators/conanbuild.sh
 
 echo "Executing cmake --build in \'`pwd`\'..."
 cmake --build .

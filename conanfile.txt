@@ -1,6 +1,6 @@
 [requires]
-#gtest/1.16.0
-cxxopts/3.2.0
+gtest/1.16.0
+#cxxopts/3.2.0
 
 [tool_requires]
 cmake/4.0.1

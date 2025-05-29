@@ -33,7 +33,17 @@ using namespace std;
 /**
  * Default constructor for the Person class.
  */
-Person::Person() = default;
+Person::Person() {
+    this->firstName = "";
+    this->middleName = "";
+    this->lastName = "";
+    this->address = Address();
+    this->phoneNumber = PhoneNumber();
+    this->sex = 0;
+    this->birthdate = Dt();
+    this->ssn = SSN();
+    this->email = EmailAddress();
+}
 
 /**
  * Constructor for the Person class that initializes the object with provided information.

@@ -22,10 +22,10 @@ pipeline {
             }
         }
 
-	stage("SAST") {
+	    stage("SAST") {
             steps {
                 sh '''
-		cppcheck --enable=warning --library=posix --error-exitcode=1 -I include sources
+		        cppcheck --enable=warning --library=posix --error-exitcode=1 -I include sources
                 '''
             }
         }

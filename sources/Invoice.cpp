@@ -36,7 +36,7 @@ Invoice::Invoice() {
     this->dueDate = Dt();
     this->lineItems = vector<InvoiceItem>();
     this->buyer = Company();
-    this->seller;
+    this->seller = Company();
     this->terms = "";
     this->invoiceNo = "";
     this->poNo = "";

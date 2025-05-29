@@ -22,6 +22,14 @@ pipeline {
             }
         }
 
+	stage("SAST") {
+            steps {
+                sh '''
+		cppcheck --enable=warning --library=posix --error-exitcode=1 -I include sources
+                '''
+            }
+        }
+	    
         stage("Build") {
             steps {
                 sh '''
@@ -32,14 +40,6 @@ pipeline {
                 #source ./Release/generators/conanbuild.sh
                 #cmake --build .
                 #source ./Release/generators/deactivate_conanbuild.sh
-                '''
-            }
-        }
-
-        stage("SAST") {
-            steps {
-                sh '''
-		cppcheck --enable=warning --library=posix --error-exitcode=1 -I include sources
                 '''
             }
         }

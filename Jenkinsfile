@@ -5,9 +5,7 @@ pipeline {
         stage('Install Tools') {
             steps {
                 sh '''
-                wget https://github.com/conan-io/conan/releases/download/2.15.1/conan-2.15.1-linux-x86_64.tgz
-                tar -xvf conan-2.15.1-linux-x86_64.tgz
-
+                wget --quiet -O - https://github.com/conan-io/conan/releases/download/2.15.1/conan-2.15.1-linux-x86_64.tgz | tar -xz
 
                 bin/conan profile detect -f
                 '''
@@ -41,7 +39,7 @@ pipeline {
         stage("SAST") {
             steps {
                 sh '''
-                    
+		cppcheck --enable=warning --library=posix --error-exitcode=1 -I include sources
                 '''
             }
         }
@@ -50,7 +48,7 @@ pipeline {
             steps {
                 sh '''
                 #source ./Release/generators/deactivate_conanbuild.sh
-                #ctest --test-dir test
+                ctest --test-dir test
                 #source ./Release/generators/deactivate_conanbuild.sh
                 '''
             }

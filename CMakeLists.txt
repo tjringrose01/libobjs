@@ -43,7 +43,7 @@ add_executable(libobjs test/libobjs.cpp
 target_link_libraries(libobjs PUBLIC objs)
 target_include_directories(libobjs PUBLIC ${INCLUDE_DIR})
 
-#add_subdirectory(test)
+add_subdirectory(test)
 
 # this is for our testing framework
 # we don't add REQUIRED because it's just for testing

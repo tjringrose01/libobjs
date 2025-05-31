@@ -7,6 +7,8 @@
 #include "MD5.hpp"
 
 MD5::MD5() {
+    buffer[0] = NULL;
+    digest[0] = NULL;
     finalized = false;
     count[0] = count[1] = 0;
     state[0] = 0x67452301;

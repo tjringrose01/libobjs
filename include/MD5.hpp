@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <string>
 #include <cstring>
+#include <cstdint>
 
 using namespace std;
 

@@ -4,6 +4,12 @@
 
 #git pull
 
+CERT_BUNDLE="/etc/pki/tls/certs/ca-bundle.crt"
+if [ ! -f "${CERT_BUNDLE}" ]; then
+    echo "Error: ${CERT_BUNDLE} is not found."
+    exit 99
+fi
+
 export PATH=${PATH}:"`pwd`/bin"
 
 ### in build folder
@@ -13,8 +19,8 @@ fi
 
 cd build
 
-echo "Installing Conan..."
-conan install .. --build=missing
+echo "Installing Buid Dependencies using Conan..."
+conan install .. --build=missing -cc core.net.http:cacert_path="${CERT_BUNDLE}"
 
 echo "Executing cmake in \'`pwd`\'..."
 cmake .. -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE="`pwd`/Release/generators/conan_toolchain.cmake" -DCMAKE_POLICY_DEFAULT_CMP0091=NEW -DCMAKE_BUILD_TYPE=Release

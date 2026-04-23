@@ -207,7 +207,8 @@ bool PhoneNumber::isNumber(const string& s) const {
  * @return ostream The output stream with the phone number in E.164 format.
  */
 ostream& operator<<(ostream& os, const PhoneNumber& phoneNumber) {
-    os << "+" << phoneNumber.toLocalFormat();
+    // Output the canonical E.164 representation (already includes a single leading '+')
+    os << phoneNumber.toE164Format();
     return os;
 }
 

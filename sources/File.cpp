@@ -50,12 +50,21 @@ std::string File::getPath() const {
  * @return The absolute path of the file.
  */
 std::string File::getAbsolutePath() const {
-    // Check for trailing slash
-    if ( path.substr(path.length() - 1, 1) == "/" ) {
-        return path + name;
-    } else {
-        return path + "/" + name;
+    if (path.empty()) {
+        return name;
     }
+
+    // Check for trailing slash
+    if (path.back() == '/' || path.back() == '\\') {
+        return path + name;
+    }
+
+    // Preserve Windows-style separators if the path uses backslashes only.
+    if (path.find('\\') != std::string::npos && path.find('/') == std::string::npos) {
+        return path + "\\" + name;
+    }
+
+    return path + "/" + name;
 }
 
 /**

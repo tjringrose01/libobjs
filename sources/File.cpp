@@ -1,5 +1,6 @@
 #include <string>
 #include <fstream>
+#include <cctype>
 #include "File.hpp"
 #include "MD5.hpp"
 
@@ -88,7 +89,16 @@ bool File::exists() const {
  */
 size_t File::getSize() const {
     ifstream in(getAbsolutePath(), ifstream::ate | ifstream::binary);
-    return in.tellg();
+    if (!in.good()) {
+        return 0;
+    }
+
+    const std::streampos endPos = in.tellg();
+    if (endPos < 0) {
+        return 0;
+    }
+
+    return static_cast<size_t>(endPos);
 }
 
 /**
@@ -101,6 +111,95 @@ string File::getMD5() const {
     string md5_hash = md5.calculate(getAbsolutePath());
     
     return md5_hash;
+}
+
+/**
+ * Check whether the file path is absolute.
+ *
+ * @return True when the absolute path is absolute, false otherwise.
+ */
+bool File::isAbsolutePath() const {
+    const string absolutePath = getAbsolutePath();
+
+    if (absolutePath.empty()) {
+        return false;
+    }
+
+    if (absolutePath[0] == '/' || absolutePath[0] == '\\') {
+        return true;
+    }
+
+    // Windows-style absolute path, such as C:\temp\file.txt
+    if (absolutePath.length() > 2 &&
+        std::isalpha(static_cast<unsigned char>(absolutePath[0])) &&
+        absolutePath[1] == ':' &&
+        (absolutePath[2] == '\\' || absolutePath[2] == '/')) {
+        return true;
+    }
+
+    return false;
+}
+
+/**
+ * Check whether the file has an extension.
+ *
+ * @return True when the file name has an extension, false otherwise.
+ */
+bool File::hasExtension() const {
+    return !getExtension().empty();
+}
+
+/**
+ * Get the file extension without the dot.
+ *
+ * @return The extension string, or empty when no extension exists.
+ */
+string File::getExtension() const {
+    if (name.empty()) {
+        return "";
+    }
+
+    const size_t dotPos = name.find_last_of('.');
+    if (dotPos == std::string::npos || dotPos == 0 || dotPos == name.length() - 1) {
+        return "";
+    }
+
+    return name.substr(dotPos + 1);
+}
+
+/**
+ * Get the file stem (name without extension).
+ *
+ * @return The stem portion of the file name.
+ */
+string File::getStem() const {
+    if (name.empty()) {
+        return "";
+    }
+
+    if (name == "." || name == "..") {
+        return name;
+    }
+
+    const size_t dotPos = name.find_last_of('.');
+    if (dotPos == std::string::npos || dotPos == 0) {
+        return name;
+    }
+
+    return name.substr(0, dotPos);
+}
+
+/**
+ * Check whether the file is a hidden Unix-style file.
+ *
+ * @return True when the filename starts with a dot.
+ */
+bool File::isHidden() const {
+    if (name == "." || name == "..") {
+        return false;
+    }
+
+    return name.length() > 1 && name[0] == '.';
 }
 
 /**
@@ -154,4 +253,3 @@ std::string File::getNameFromAbsolutePath(string fileName) {
     }
     return name; // Placeholder, replace with actual implementation
 }
-

@@ -68,6 +68,41 @@ public:
      */
     string getMD5() const;
 
+    /**
+     * Check whether the file path is absolute.
+     *
+     * @return True when the absolute path is absolute, false otherwise.
+     */
+    bool isAbsolutePath() const;
+
+    /**
+     * Check whether the file has an extension.
+     *
+     * @return True when the file name has an extension, false otherwise.
+     */
+    bool hasExtension() const;
+
+    /**
+     * Get the file extension without the dot.
+     *
+     * @return The extension string, or empty when no extension exists.
+     */
+    string getExtension() const;
+
+    /**
+     * Get the file stem (name without extension).
+     *
+     * @return The stem portion of the file name.
+     */
+    string getStem() const;
+
+    /**
+     * Check whether the file is a hidden Unix-style file.
+     *
+     * @return True when the filename starts with a dot.
+     */
+    bool isHidden() const;
+
 private:
     std::string name; /**< The name of the file. */
     std::string path; /**< The path of the file. */

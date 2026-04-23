@@ -1,10 +1,10 @@
 
-#find_package(cxxopts)
+find_package(cxxopts REQUIRED)
 
 ### file binary
-#add_executable(file file.cpp)
-#target_link_libraries(file objs cxxopts::cxxopts)
-#target_include_directories(file PUBLIC ../include)
+add_executable(file file.cpp)
+target_link_libraries(file objs cxxopts::cxxopts)
+target_include_directories(file PUBLIC ../include)
 
 find_package(GTest REQUIRED)
 
@@ -30,6 +30,11 @@ add_executable(EmailAddress_gtest EmailAddress_gtest.cpp)
 target_link_libraries(EmailAddress_gtest objs GTest::gtest_main)
 target_include_directories(EmailAddress_gtest PUBLIC ../include)
 
+### File Unit Testing
+add_executable(File_gtest File_gtest.cpp)
+target_link_libraries(File_gtest objs GTest::gtest_main)
+target_include_directories(File_gtest PUBLIC ../include)
+
 ### Invoice Unit Testing
 add_executable(Invoice_gtest Invoice_gtest.cpp)
 target_link_libraries(Invoice_gtest objs GTest::gtest_main)
@@ -46,5 +51,6 @@ gtest_discover_tests(Company_gtest)
 gtest_discover_tests(CurrencyAmount_gtest)
 gtest_discover_tests(Dt_gtest)
 gtest_discover_tests(EmailAddress_gtest)
+gtest_discover_tests(File_gtest)
 gtest_discover_tests(Invoice_gtest)
 gtest_discover_tests(PhoneNumber_gtest)

@@ -19,7 +19,7 @@ fi
 
 cd build
 
-echo "Installing Buid Dependencies using Conan..."
+echo "Installing build dependencies using Conan..."
 conan install .. --build=missing -cc core.net.http:cacert_path="${CERT_BUNDLE}"
 
 echo "Executing cmake in \'`pwd`\'..."

@@ -6,3 +6,6 @@ rm -rf build
 
 echo "Cleaning CMakeUserPresets.json"
 rm -rf CMakeUserPresets.json
+
+echo "Cleaning CMakeCache.txt"
+rm -rf CMakeCache.txt

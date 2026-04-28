@@ -49,6 +49,8 @@ Existing and newly-added modeling classes include:
 - `WorkOrder`, `InspectionRecord`, `Incident`, `DisposalRecord`
 - `DepreciationProfile`, `AuditSession`, `AuditResult`
 - `CustomFieldDefinition`, `CustomFieldValue`, `DocumentAttachment`
+- `DataCenter`, `Building`, `Room`, `Cage`, `Rack`, `RackPosition`
+- `PowerFeed`, `PowerCircuit`, `PduOutlet`, `CoolingZone`, `NetworkPort`, `NetworkLink`
 
 ## Standards
 

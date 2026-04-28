@@ -1,40 +1,59 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-#./clean
-
-#git pull
-
-CERT_BUNDLE="/etc/pki/tls/certs/ca-bundle.crt"
-if [ ! -f "${CERT_BUNDLE}" ]; then
-    echo "Error: ${CERT_BUNDLE} is not found."
-    exit 99
+if [[ "${BASH_SOURCE[0]}" == */* ]]; then
+    SCRIPT_PATH="${BASH_SOURCE[0]}"
+else
+    SCRIPT_PATH="$(command -v -- "${BASH_SOURCE[0]}")"
 fi
 
-export PATH=${PATH}:"`pwd`/bin"
+SCRIPT_PATH="$(readlink -f "${SCRIPT_PATH}")"
+SCRIPT_DIR="$(cd "$(dirname "${SCRIPT_PATH}")" && pwd)"
+REPO_ROOT="$(git -C "${SCRIPT_DIR}" rev-parse --show-toplevel)"
 
-### in build folder
-if [ ! -d "./build" ]; then
-	mkdir build
-fi
+cd "${REPO_ROOT}"
 
-cd build
+export PATH="${PATH}:${REPO_ROOT}/bin"
+
+BUILD_DIR="${REPO_ROOT}/build"
+
+CERT_BUNDLE="${CERT_BUNDLE:-/etc/pki/tls/certs/ca-bundle.crt}"
+
+echo "Repository root: ${REPO_ROOT}"
+echo "Build directory: ${BUILD_DIR}"
+
+echo "Detecting Conan profile..."
+conan profile detect --force
 
 echo "Installing build dependencies using Conan..."
-conan install .. --build=missing -cc core.net.http:cacert_path="${CERT_BUNDLE}"
 
-echo "Executing cmake in \'`pwd`\'..."
-cmake .. -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE="`pwd`/Release/generators/conan_toolchain.cmake" -DCMAKE_POLICY_DEFAULT_CMP0091=NEW -DCMAKE_BUILD_TYPE=Release
+# `cmake_layout` already uses `build/<config>`, so use repo root as Conan output folder
+# to avoid ending up with `build/build/<config>`.
+conan_install_cmd=(conan install "${REPO_ROOT}" --output-folder="${REPO_ROOT}" --build=missing)
+if [[ -f "${CERT_BUNDLE}" ]]; then
+    echo "Using Conan CA bundle at: ${CERT_BUNDLE}"
+    conan_install_cmd+=(-cc "core.net.http:cacert_path=${CERT_BUNDLE}")
+else
+    echo "Conan CA bundle not found at ${CERT_BUNDLE}; installing without cacert_path override."
+fi
+"${conan_install_cmd[@]}"
 
-#echo "Setting up environment..."
-#source ./Release/generators/conanbuild.sh
-echo "Setting up environment..."
-source ./Release/generators/conanbuild.sh
+TOOLCHAIN_FILE="${BUILD_DIR}/Release/generators/conan_toolchain.cmake"
+if [[ ! -f "${TOOLCHAIN_FILE}" ]]; then
+    echo "Error: expected Conan toolchain not found at ${TOOLCHAIN_FILE}"
+    exit 2
+fi
 
-echo "Executing cmake --build in \'`pwd`\'..."
-cmake --build .
+echo "Configuring CMake directly into ${BUILD_DIR}/Release..."
+cmake -S "${REPO_ROOT}" \
+      -B "${BUILD_DIR}/Release" \
+      -G "Unix Makefiles" \
+      -DCMAKE_TOOLCHAIN_FILE="${TOOLCHAIN_FILE}" \
+      -DCMAKE_POLICY_DEFAULT_CMP0091=NEW \
+      -DCMAKE_BUILD_TYPE=Release
 
-echo "Executing ctest in \'`pwd`\'..."
-ctest --test-dir test
+echo "Building with CMake..."
+cmake --build "${BUILD_DIR}/Release" -j4
 
-echo "Tearing down environment..."
-source ./Release/generators/deactivate_conanbuild.sh
+echo "Running tests..."
+ctest --test-dir "${BUILD_DIR}/Release" --output-on-failure

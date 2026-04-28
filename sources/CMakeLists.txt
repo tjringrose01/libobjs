@@ -45,6 +45,18 @@ add_library(
     AuditSession.cpp
     CustomFieldDefinition.cpp
     CustomFieldValue.cpp
+    DataCenter.cpp
+    Building.cpp
+    Room.cpp
+    Cage.cpp
+    Rack.cpp
+    RackPosition.cpp
+    PowerFeed.cpp
+    PowerCircuit.cpp
+    PduOutlet.cpp
+    CoolingZone.cpp
+    NetworkPort.cpp
+    NetworkLink.cpp
     User.cpp
     Meal.cpp
     File.cpp

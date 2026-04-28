@@ -90,6 +90,18 @@ add_executable(
     include/AuditSession.hpp
     include/CustomFieldDefinition.hpp
     include/CustomFieldValue.hpp
+    include/DataCenter.hpp
+    include/Building.hpp
+    include/Room.hpp
+    include/Cage.hpp
+    include/Rack.hpp
+    include/RackPosition.hpp
+    include/PowerFeed.hpp
+    include/PowerCircuit.hpp
+    include/PduOutlet.hpp
+    include/CoolingZone.hpp
+    include/NetworkPort.hpp
+    include/NetworkLink.hpp
 )
 target_link_libraries(libobjs PUBLIC objs)
 target_include_directories(libobjs PUBLIC "${INCLUDE_DIR}")

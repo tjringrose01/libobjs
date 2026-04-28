@@ -1,3 +1,8 @@
+/**
+ * @file file.cpp
+ * @brief Source/header documentation for file.cpp.
+ */
+
 #include <iostream>
 #include <string>
 #include "cxxopts.hpp"

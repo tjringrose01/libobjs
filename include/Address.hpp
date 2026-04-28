@@ -33,6 +33,9 @@ using namespace std;
 /**
  * Represents an address with street information, city, state, and ZIP code.
  */
+/**
+ * @brief Address model.
+ */
 class Address {
 private:
     /* Private Members */

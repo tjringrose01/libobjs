@@ -1,3 +1,8 @@
+/**
+ * @file dates.cpp
+ * @brief Source/header documentation for dates.cpp.
+ */
+
 #include "Dt.hpp"
 #include <cassert>
 #include <iostream>

@@ -1,3 +1,8 @@
+/**
+ * @file File.hpp
+ * @brief Source/header documentation for File.hpp.
+ */
+
 #ifndef FILE_HPP
 #define FILE_HPP
 
@@ -8,6 +13,9 @@ using namespace std;
 
 /**
  * Represents a file with its name, path, and size.
+ */
+/**
+ * @brief File model.
  */
 class File {
 public:

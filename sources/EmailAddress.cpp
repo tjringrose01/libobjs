@@ -81,9 +81,9 @@ string EmailAddress::to_string() const {
  */
 void EmailAddress::set_name(string email) {
 	//Parse out name from emailAddress
-	int n = email.find("@");
+        string::size_type n = email.find("@");
 
-	if ( n == string::npos )
+        if ( n == string::npos )
 		throw std::invalid_argument( "ERROR: received invalid value for email" + email );
 
 	if ( email.substr(0,n).length() == 0 )
@@ -102,17 +102,17 @@ void EmailAddress::set_name(string email) {
  */
 void EmailAddress::set_domain(string email) {
 	//Parse out domain from emailAddress
-	int n = email.find("@");
+        string::size_type n = email.find("@");
 
-	if ( n == string::npos )
+        if ( n == string::npos )
 		throw std::invalid_argument( "ERROR: received invalid value for email - " + email );
 
 	if ( email.substr(n+1,email.length() - n).length() == 0 )
 		throw std::invalid_argument( "ERROR: received invalid value for email - " + email );
 
-	int o = email.substr(n+1,email.length() - n).find(".");
+        string::size_type o = email.substr(n + 1, email.length() - n).find(".");
 
-	if ( o == string::npos )
+        if ( o == string::npos )
 		throw std::invalid_argument( "ERROR: received invalid value for email - " + email );
 
 
@@ -177,6 +177,3 @@ ostream& operator<<(ostream& os, const EmailAddress& email) {
     os << email.to_string();
     return os;
 }
-
-
-

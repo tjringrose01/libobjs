@@ -36,6 +36,9 @@ typedef string String;
  * It provides methods to set and get the year, month, and day, 
  * convert the date to a string, compare two dates, and get the day of the week.
  */
+/**
+ * @brief Dt model.
+ */
 class Dt {
 private:
     /* Private Members */

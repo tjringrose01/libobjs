@@ -1,3 +1,28 @@
+/**
+ *  MD5.cpp - libobjs Class Implementation - This class is
+ *             responsible for calculating MD5 hashes for file content.
+ *
+ *  Copyright 2026 Timothy Ringrose
+ *
+ *  This file is part of libobjs.
+ *
+ *  libobjs is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  libobjs is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with libobjs. If not, see <http://www.gnu.org/licenses/>.
+ *
+ *  Domain Rules:
+ *  - MD5 state is updated in 512-bit blocks and finalized once per digest.
+ */
+
 #include <cstring>
 #include <fstream>
 #include <iomanip>
@@ -52,6 +77,9 @@ inline void II(uint32_t& a, uint32_t b, uint32_t c, uint32_t d, uint32_t x, uint
 }
 }  // namespace
 
+/**
+ * @brief Construct a new MD5 context with initialized state constants.
+ */
 MD5::MD5() : finalized(false) {
     std::memset(buffer, 0, sizeof(buffer));
     std::memset(digest, 0, sizeof(digest));
@@ -63,6 +91,11 @@ MD5::MD5() : finalized(false) {
     state[3] = 0x10325476;
 }
 
+/**
+ * @brief Process one 64-byte input block through MD5 rounds.
+ *
+ * @param block Input data block.
+ */
 void MD5::transform(const unsigned char block[64]) {
     uint32_t a = state[0];
     uint32_t b = state[1];
@@ -148,6 +181,13 @@ void MD5::transform(const unsigned char block[64]) {
     std::memset(x, 0, sizeof(x));
 }
 
+/**
+ * @brief Encode 32-bit words into little-endian byte output.
+ *
+ * @param input Word input buffer.
+ * @param output Byte output buffer.
+ * @param length Number of output bytes.
+ */
 void MD5::encode(const uint32_t* input, unsigned char* output, size_t length) {
     for (size_t i = 0, j = 0; j < length; ++i, j += 4) {
         output[j] = static_cast<unsigned char>(input[i] & 0xff);
@@ -157,6 +197,13 @@ void MD5::encode(const uint32_t* input, unsigned char* output, size_t length) {
     }
 }
 
+/**
+ * @brief Decode little-endian bytes into 32-bit words.
+ *
+ * @param input Byte input buffer.
+ * @param output Word output buffer.
+ * @param length Number of input bytes.
+ */
 void MD5::decode(const unsigned char* input, uint32_t* output, size_t length) {
     for (size_t i = 0, j = 0; j < length; ++i, j += 4) {
         output[i] = static_cast<uint32_t>(input[j]) |
@@ -166,6 +213,12 @@ void MD5::decode(const unsigned char* input, uint32_t* output, size_t length) {
     }
 }
 
+/**
+ * @brief Update digest state with additional raw bytes.
+ *
+ * @param input Input bytes.
+ * @param length Number of bytes.
+ */
 void MD5::update(const unsigned char* input, size_t length) {
     uint32_t i = 0;
     const uint32_t index = static_cast<uint32_t>((count[0] >> 3) & 0x3F);
@@ -192,6 +245,9 @@ void MD5::update(const unsigned char* input, size_t length) {
     std::memcpy(&buffer[writeIndex], &input[i], length - i);
 }
 
+/**
+ * @brief Finalize digest state and materialize the 16-byte digest.
+ */
 void MD5::finalize() {
     if (finalized) {
         return;
@@ -214,6 +270,12 @@ void MD5::finalize() {
     finalized = true;
 }
 
+/**
+ * @brief Calculate file MD5 hash as lowercase hexadecimal text.
+ *
+ * @param filename Path to the file to hash.
+ * @return 32-char hex digest string, or empty when file cannot be read.
+ */
 std::string MD5::calculate(const std::string& filename) {
     std::ifstream file(filename, std::ios::binary);
     if (!file.is_open()) {

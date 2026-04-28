@@ -1,3 +1,8 @@
+/**
+ * @file MD5.hpp
+ * @brief Source/header documentation for MD5.hpp.
+ */
+
 #ifndef __MD5__
 #define __MD5__
 
@@ -10,6 +15,9 @@
 #include <cstdint>
 
 using namespace std;
+/**
+ * @brief MD5 model.
+ */
 
 class MD5 {
 private:

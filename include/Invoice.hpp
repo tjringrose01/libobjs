@@ -59,6 +59,9 @@ Notes: Any additional information relevant to the invoice, such as special instr
 #include "CurrencyAmount.hpp"
 
 using namespace std;
+/**
+ * @brief Invoice model.
+ */
 
 class Invoice {
     /* Private Members */

@@ -27,6 +27,9 @@
 #include <string>
 
 using namespace std;
+/**
+ * @brief SSN model.
+ */
 
 class SSN {
 private:

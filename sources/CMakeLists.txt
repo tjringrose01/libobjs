@@ -1,4 +1,6 @@
-add_library(objs SHARED
+add_library(
+    objs
+    SHARED
     Dt.cpp
     PhoneNumber.cpp
     CurrencyAmount.cpp
@@ -9,15 +11,53 @@ add_library(objs SHARED
     Company.cpp
     InvoiceItem.cpp
     Invoice.cpp
+    Payment.cpp
+    QuoteItem.cpp
+    Quote.cpp
+    TaxRule.cpp
+    TaxProfile.cpp
+    LedgerEntry.cpp
+    Refund.cpp
+    CreditMemo.cpp
+    PurchaseOrder.cpp
+    BankAccount.cpp
+    Receipt.cpp
+    Money.cpp
+    PaymentSchedule.cpp
+    InvoiceWorkflow.cpp
+    AssetType.cpp
+    AssetModel.cpp
+    Location.cpp
+    Department.cpp
+    Vendor.cpp
+    Asset.cpp
+    Assignment.cpp
+    AssetEvent.cpp
+    MaintenancePlan.cpp
+    WorkOrder.cpp
+    InspectionRecord.cpp
+    Warranty.cpp
+    DocumentAttachment.cpp
+    Incident.cpp
+    DepreciationProfile.cpp
+    DisposalRecord.cpp
+    AuditResult.cpp
+    AuditSession.cpp
+    CustomFieldDefinition.cpp
+    CustomFieldValue.cpp
     User.cpp
     Meal.cpp
     File.cpp
     MD5.cpp
 )
 
-target_include_directories(objs PRIVATE
-    "${CMAKE_CURRENT_BINARY_DIR}"
-    "${CMAKE_CURRENT_SOURCE_DIR}"
-    ../include
-)
+target_compile_features(objs PUBLIC cxx_std_17)
 
+target_include_directories(
+    objs
+    PUBLIC
+        "${CMAKE_CURRENT_SOURCE_DIR}/../include"
+    PRIVATE
+        "${CMAKE_CURRENT_BINARY_DIR}"
+        "${CMAKE_CURRENT_SOURCE_DIR}"
+)

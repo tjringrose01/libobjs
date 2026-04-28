@@ -35,6 +35,9 @@ using namespace std;
 /**
  * Represents a Company with essential information.
  */
+/**
+ * @brief Company model.
+ */
 class Company {
 private:
     string companyName; /**< The name of the company */

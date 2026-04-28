@@ -30,6 +30,9 @@
 #include <stdexcept>
 
 using namespace std;
+/**
+ * @brief EmailAddress model.
+ */
 
 class EmailAddress {
 private:

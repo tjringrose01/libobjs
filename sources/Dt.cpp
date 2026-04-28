@@ -190,16 +190,17 @@ void Dt::set_day(int day) {
 
     // If the month is February, check if the year is a leap year to determine the valid range for the day
     if ( this->month == 2 ) {
-	    if ( year % 4 == 0 )
-		    if ( year % 100 == 0 && year % 400 != 0 ) {
-                        // If the year is not a leap year, the valid range for the day is 1-28
-		    	if ( day >= 1 && day <= 28 )
-				isValid = true;
-		    } else {
-                        // If the year is a leap year, the valid range for the day is 1-29
-		    	if ( day >= 1 && day <= 29 )
-				isValid = true;
-		    }
+        if (year % 4 == 0) {
+            if (year % 100 == 0 && year % 400 != 0) {
+                // If the year is not a leap year, the valid range for the day is 1-28
+                if (day >= 1 && day <= 28)
+                    isValid = true;
+            } else {
+                // If the year is a leap year, the valid range for the day is 1-29
+                if (day >= 1 && day <= 29)
+                    isValid = true;
+            }
+        }
     }
 
     // If the day is valid, set the day or else throw an exception
@@ -298,4 +299,3 @@ std::ostream& operator<<(std::ostream& os, const Dt& date) {
     os << date.to_string();
     return os;
 }
-

@@ -34,6 +34,9 @@ using namespace std;
 /**
  * Represents an item in an invoice.
  */
+/**
+ * @brief InvoiceItem model.
+ */
 class InvoiceItem {
 private:
     /* Private Members */

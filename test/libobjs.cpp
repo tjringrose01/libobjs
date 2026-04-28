@@ -1,3 +1,8 @@
+/**
+ * @file libobjs.cpp
+ * @brief Source/header documentation for libobjs.cpp.
+ */
+
 #include <iostream>
 
 #include "EmailAddress.hpp"
@@ -9,6 +14,8 @@
 using namespace std;
 
 int main(int argc, char** argv) {
+    (void)argc;
+    (void)argv;
 
     cout << "libobjs: " << endl;
 

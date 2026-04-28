@@ -30,15 +30,9 @@ using namespace std;
 
 // Initialize the map of valid country codes and names
 const unordered_map<string, PhoneNumber::CountryInfo> PhoneNumber::validCountryCodes = {
-    { "1",  { "1",     "United States" } },
-    { "44", { "44",    "United Kingdom" } },
-    { "49", { "49",    "Germany" } },
-    { "33", { "33",    "France" } },
-    { "81", { "81",    "Japan" } },
-    { "86", { "86",    "China" } },
-    { "91", { "91",    "India" } },
-    { "7",  { "7",     "Russia" } },
-    { "55", { "55",    "Brazil" } },
+    {"1", {"1", "United States"}}, {"44", {"44", "United Kingdom"}}, {"49", {"49", "Germany"}},
+    {"33", {"33", "France"}},      {"81", {"81", "Japan"}},          {"86", {"86", "China"}},
+    {"91", {"91", "India"}},       {"7", {"7", "Russia"}},           {"55", {"55", "Brazil"}},
     // Add more country codes and names here
 };
 
@@ -49,13 +43,14 @@ PhoneNumber::PhoneNumber() = default;
 
 /**
  * Constructor for PhoneNumber with country code.
- * 
+ *
  * @param countryCode The country code of the phone number.
  * @param areaCode The area code of the phone number.
  * @param prefix The prefix of the phone number.
  * @param number The number of the phone number.
  */
-PhoneNumber::PhoneNumber(const string& countryCode, const string& areaCode, const string& prefix, const string& number) {
+PhoneNumber::PhoneNumber(const string& countryCode, const string& areaCode, const string& prefix,
+                         const string& number) {
     validatePart(countryCode, "Country Code");
     if (validCountryCodes.find(countryCode) == validCountryCodes.end()) {
         throw invalid_argument("Invalid country code.");
@@ -70,7 +65,6 @@ PhoneNumber::PhoneNumber(const string& countryCode, const string& areaCode, cons
     prefix_ = prefix;
     number_ = number;
 }
-
 
 /**
  * Get the country code of the phone number.
@@ -117,7 +111,6 @@ string PhoneNumber::toE164Format() const {
     return "+" + countryCode_ + areaCode_ + prefix_ + number_;
 }
 
-
 /**
  * Get the phone number in local format.
  * If the country code is "1" (United States), the format will be (XXX) YYY-ZZZZ.
@@ -144,8 +137,6 @@ string PhoneNumber::to_string() const {
     return toLocalFormat();
 }
 
-
-
 /**
  * Check if this phone number is equal to another phone number.
  *
@@ -153,10 +144,8 @@ string PhoneNumber::to_string() const {
  * @return bool True if the phone numbers are equal, false otherwise.
  */
 bool PhoneNumber::isEqualTo(const PhoneNumber& other) const {
-    return (countryCode_ == other.countryCode_ &&
-            areaCode_ == other.areaCode_ &&
-            prefix_ == other.prefix_ &&
-            number_ == other.number_);
+    return (countryCode_ == other.countryCode_ && areaCode_ == other.areaCode_ &&
+            prefix_ == other.prefix_ && number_ == other.number_);
 }
 
 /**
@@ -195,7 +184,8 @@ void PhoneNumber::validatePart(const string& part, const string& partName) const
  */
 bool PhoneNumber::isNumber(const string& s) const {
     string::const_iterator it = s.begin();
-    while (it != s.end() && isdigit(*it)) ++it;
+    while (it != s.end() && isdigit(*it))
+        ++it;
     return !s.empty() && it == s.end();
 }
 
@@ -211,4 +201,3 @@ ostream& operator<<(ostream& os, const PhoneNumber& phoneNumber) {
     os << phoneNumber.toE164Format();
     return os;
 }
-

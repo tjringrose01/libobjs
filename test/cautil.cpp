@@ -1,3 +1,8 @@
+/**
+ * @file cautil.cpp
+ * @brief Source/header documentation for cautil.cpp.
+ */
+
 #include <iostream>
 #include <string>
 #include "CurrencyAmount.hpp"

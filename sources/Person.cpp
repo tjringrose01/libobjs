@@ -22,28 +22,12 @@
  *
  */
 
-#include <string>
 #include "Person.hpp"
-#include "Dt.hpp"
-
-using namespace std;
-
-#define PROGRAM "libobjs"
 
 /**
  * Default constructor for the Person class.
  */
-Person::Person() {
-    this->firstName = "";
-    this->middleName = "";
-    this->lastName = "";
-    this->address = Address();
-    this->phoneNumber = PhoneNumber();
-    this->sex = 0;
-    this->birthdate = Dt();
-    this->ssn = SSN();
-    this->email = EmailAddress();
-}
+Person::Person() = default;
 
 /**
  * Constructor for the Person class that initializes the object with provided information.
@@ -58,30 +42,24 @@ Person::Person() {
  * @param ssn The social security number of the person (SSN).
  * @param email The email address of the person (EmailAddress).
  */
-Person::Person(string firstName, string middleName, string lastName, Address address, PhoneNumber phoneNumber, int sex, Dt birthdate, SSN ssn, EmailAddress email) {
-    this->firstName = firstName;
-    this->middleName = middleName;
-    this->lastName = lastName;
-    this->address = address;
-    this->phoneNumber = phoneNumber;
-    this->sex = sex;
-    this->birthdate = birthdate;
-    this->ssn = ssn;
-    this->email = email;
-}
+Person::Person(const std::string& firstName, const std::string& middleName,
+               const std::string& lastName, const Address& address, const PhoneNumber& phoneNumber,
+               int sex, const Dt& birthdate, const SSN& ssn, const EmailAddress& email)
+    : firstName(firstName), lastName(lastName), middleName(middleName), address(address),
+      phoneNumber(phoneNumber), sex(sex), birthdate(birthdate), ssn(ssn), email(email) {}
 
 /**
  * Destructor for the Person class.
  */
-Person::~Person() {
-}
+Person::~Person() = default;
+
 /**
  * Method to convert the object into a string representation.
  *
  * @return A string representing the object in a formatted manner.
  */
-string Person::to_string() const {
-    string retString = "";
+std::string Person::to_string() const {
+    std::string retString = "";
 
     retString += firstName;
     retString += " ";
@@ -101,7 +79,7 @@ string Person::to_string() const {
     retString += "; ";
     retString += email.to_string();
 
-    return(retString);
+    return retString;
 }
 
 /**
@@ -109,20 +87,19 @@ string Person::to_string() const {
  *
  * @return A string representing the sex label (Male, Female, or Unknown).
  */
-string Person::getSexLabel() const {
-    string label = "Unknown";
-    switch (this->sex) {
-        case 0:
-            label = "Male";
-            break;
-        
-        case 1:
-            label = "Female";
-            break;
+std::string Person::getSexLabel() const {
+    std::string label = "Unknown";
+    switch (sex) {
+    case 0:
+        label = "Male";
+        break;
 
+    case 1:
+        label = "Female";
+        break;
     }
 
-    return(label);
+    return label;
 }
 
 /**
@@ -130,7 +107,7 @@ string Person::getSexLabel() const {
  *
  * @return The full name of the person.
  */
-string Person::getName() const {
+std::string Person::getName() const {
     return firstName + " " + lastName;
 }
 
@@ -140,7 +117,7 @@ string Person::getName() const {
  * @return The email address of the person.
  */
 EmailAddress Person::getEmail() const {
-    return this->email;
+    return email;
 }
 
 /**
@@ -149,7 +126,7 @@ EmailAddress Person::getEmail() const {
  * @return The phone number of the person.
  */
 PhoneNumber Person::getPhoneNumber() const {
-    return this->phoneNumber;
+    return phoneNumber;
 }
 
 /**
@@ -159,15 +136,10 @@ PhoneNumber Person::getPhoneNumber() const {
  * @return bool True if the Person objects are equal, false otherwise.
  */
 bool Person::operator==(const Person& other) const {
-    return (this->firstName == other.firstName &&
-            this->middleName == other.middleName &&
-            this->lastName == other.lastName &&
-            this->address == other.address &&
-            this->phoneNumber == other.phoneNumber &&
-            this->sex == other.sex &&
-            this->birthdate == other.birthdate &&
-            this->ssn == other.ssn &&
-            this->email == other.email);
+    return (firstName == other.firstName && middleName == other.middleName &&
+            lastName == other.lastName && address == other.address &&
+            phoneNumber == other.phoneNumber && sex == other.sex && birthdate == other.birthdate &&
+            ssn == other.ssn && email == other.email);
 }
 
 /**
@@ -177,7 +149,7 @@ bool Person::operator==(const Person& other) const {
  * @param person The Person object to output.
  * @return ostream The output stream with the Person object.
  */
-ostream& operator<<(ostream& os, const Person& person) {
+std::ostream& operator<<(std::ostream& os, const Person& person) {
     os << person.to_string();
     return os;
 }

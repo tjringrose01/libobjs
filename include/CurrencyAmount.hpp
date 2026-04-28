@@ -29,6 +29,9 @@
 using namespace std;
 
 #define DEFAULT_CURRENCY_CODE "USD"
+/**
+ * @brief CurrencyAmount model.
+ */
 
 class CurrencyAmount {
 public:

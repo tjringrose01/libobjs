@@ -35,6 +35,9 @@ using namespace std;
 /**
  * PhoneNumber class represents a phone number with country code, area code, prefix, and number.
  */
+/**
+ * @brief PhoneNumber model.
+ */
 class PhoneNumber {
 public:
     /**

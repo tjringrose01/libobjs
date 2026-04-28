@@ -1,3 +1,8 @@
+/**
+ * @file User.hpp
+ * @brief Source/header documentation for User.hpp.
+ */
+
 #ifndef USER_H
 #define USER_H
 

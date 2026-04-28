@@ -1,3 +1,8 @@
+/**
+ * @file Meal.hpp
+ * @brief Source/header documentation for Meal.hpp.
+ */
+
 #ifndef MEAL_HPP
 #define MEAL_HPP
 

@@ -71,12 +71,17 @@ Existing and newly-added modeling classes include:
 
 - Documentation must be Doxygen compatible.
 - Every `.hpp` and `.cpp` file must start with a file-level Doxygen block.
-- Use `sources/SSN.cpp` as the baseline style for source documentation depth and structure.
+- Use the `Asset*`, `Location`, and `Department` API docs as the baseline style for value-model documentation quality and specificity.
 - File-level source comments must state: file/class responsibility, project/license context, and any domain references or rules that explain validation behavior.
 - All Classes and enums in headers must include `@brief` comments.
-- All Constructors and methods in headers must include `@brief`, plus `@param`, `@return`, and `@throws` when applicable.
-- Source (`.cpp`) implementations must document constructor intent and method behavior with Doxygen blocks, including validation rationale for non-obvious rules.
-- Comments should explain intent and constraints, not restate obvious code line-by-line.
+- Public API contracts belong on declarations in headers.
+- Constructor/method docs must describe purpose and behavior, not syntax ("Get X", "Set Y", "Compare A and B").
+- Use `@param`, `@return`, and `@throws` only when they add behavioral value; do not restate obvious signature types.
+- Document property constraints when relevant: allowed formats, min/max ranges, units, sentinel values, and whether empty values are meaningful.
+- If a setter/constructor does not enforce validation, state that explicitly so callers understand responsibility boundaries.
+- Return docs must describe semantics, not just type (for example what `true` means, output format stability, fallback values like `UNKNOWN`).
+- Equality/operator docs must define comparison semantics (full state equality vs identity equality).
+- `.cpp` comments should focus on non-obvious implementation details; avoid duplicating header docs with tautological one-liners.
 - Keep docs in sync with behavior changes (constructor semantics, return formats, validation rules).
 - Use Markdown for repository documentation; avoid embedded HTML tags for code blocks and links.
 - Update this README when build, test, or dependency workflow changes.

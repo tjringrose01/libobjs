@@ -35,31 +35,26 @@ Department::Department(const std::string& departmentId,
                        const std::string& managerId)
     : departmentId(departmentId), name(name), costCenter(costCenter), managerId(managerId) {}
 
-/** @brief Get the department identifier. */
 std::string Department::getDepartmentId() const { return departmentId; }
 
-/** @brief Get the department name. */
 std::string Department::getName() const { return name; }
 
-/** @brief Get the cost center code. */
 std::string Department::getCostCenter() const { return costCenter; }
 
-/** @brief Get the manager identifier. */
 std::string Department::getManagerId() const { return managerId; }
 
-/** @brief Set the department identifier. */
 void Department::setDepartmentId(const std::string& departmentId) { this->departmentId = departmentId; }
 
-/** @brief Set the department name. */
 void Department::setName(const std::string& name) { this->name = name; }
 
-/** @brief Set the cost center code. */
 void Department::setCostCenter(const std::string& costCenter) { this->costCenter = costCenter; }
 
-/** @brief Set the manager identifier. */
 void Department::setManagerId(const std::string& managerId) { this->managerId = managerId; }
 
-/** @brief Convert this department to a human-readable string. */
+/**
+ * @brief Produce a deterministic key/value snapshot of the department state.
+ * @details Intended for diagnostics rather than end-user presentation.
+ */
 std::string Department::to_string() const {
     return "departmentId=" + departmentId +
            "; name=" + name +
@@ -67,7 +62,9 @@ std::string Department::to_string() const {
            "; managerId=" + managerId;
 }
 
-/** @brief Compare two department values. */
+/**
+ * @brief Compare two departments for strict field-by-field equality.
+ */
 bool Department::operator==(const Department& other) const {
     return departmentId == other.departmentId &&
            name == other.name &&
@@ -75,7 +72,6 @@ bool Department::operator==(const Department& other) const {
            managerId == other.managerId;
 }
 
-/** @brief Stream a department value. */
 std::ostream& operator<<(std::ostream& os, const Department& department) {
     os << department.to_string();
     return os;

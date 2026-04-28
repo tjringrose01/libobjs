@@ -54,57 +54,44 @@ Asset::Asset(const std::string& assetId,
       owningDepartment(owningDepartment),
       custodianId(custodianId) {}
 
-/** @brief Get the asset identifier. */
 std::string Asset::getAssetId() const { return assetId; }
 
-/** @brief Get the asset tag. */
 std::string Asset::getAssetTag() const { return assetTag; }
 
-/** @brief Get the serial number. */
 std::string Asset::getSerialNumber() const { return serialNumber; }
 
-/** @brief Get the model metadata. */
 AssetModel Asset::getModel() const { return model; }
 
-/** @brief Get the current asset status. */
 AssetStatus Asset::getStatus() const { return status; }
 
-/** @brief Get the location data. */
 Location Asset::getLocation() const { return location; }
 
-/** @brief Get the owning department data. */
 Department Asset::getOwningDepartment() const { return owningDepartment; }
 
-/** @brief Get the custodian identifier. */
 std::string Asset::getCustodianId() const { return custodianId; }
 
-/** @brief Set the asset identifier. */
 void Asset::setAssetId(const std::string& assetId) { this->assetId = assetId; }
 
-/** @brief Set the asset tag. */
 void Asset::setAssetTag(const std::string& assetTag) { this->assetTag = assetTag; }
 
-/** @brief Set the serial number. */
 void Asset::setSerialNumber(const std::string& serialNumber) { this->serialNumber = serialNumber; }
 
-/** @brief Set the model metadata. */
 void Asset::setModel(const AssetModel& model) { this->model = model; }
 
-/** @brief Set the lifecycle status. */
 void Asset::setStatus(AssetStatus status) { this->status = status; }
 
-/** @brief Set the current location. */
 void Asset::setLocation(const Location& location) { this->location = location; }
 
-/** @brief Set the owning department. */
 void Asset::setOwningDepartment(const Department& owningDepartment) {
     this->owningDepartment = owningDepartment;
 }
 
-/** @brief Set the custodian identifier. */
 void Asset::setCustodianId(const std::string& custodianId) { this->custodianId = custodianId; }
 
-/** @brief Convert an asset status enum value to text. */
+/**
+ * @brief Convert status to a stable token used in logs and serialized text output.
+ * @return `UNKNOWN` if an out-of-range enum value is provided.
+ */
 std::string Asset::assetStatusToString(AssetStatus status) {
     switch (status) {
         case AssetStatus::IN_STOCK:
@@ -122,7 +109,10 @@ std::string Asset::assetStatusToString(AssetStatus status) {
     }
 }
 
-/** @brief Convert this asset to a human-readable string. */
+/**
+ * @brief Produce a deterministic key/value snapshot of the full asset state.
+ * @details Intended for diagnostics rather than end-user presentation.
+ */
 std::string Asset::to_string() const {
     return "assetId=" + assetId +
            "; assetTag=" + assetTag +
@@ -134,7 +124,10 @@ std::string Asset::to_string() const {
            "; custodianId=" + custodianId;
 }
 
-/** @brief Compare two asset values. */
+/**
+ * @brief Compare two assets for strict field-by-field equality.
+ * @details Equality requires all scalar fields and nested value objects to match.
+ */
 bool Asset::operator==(const Asset& other) const {
     return assetId == other.assetId &&
            assetTag == other.assetTag &&
@@ -146,7 +139,6 @@ bool Asset::operator==(const Asset& other) const {
            custodianId == other.custodianId;
 }
 
-/** @brief Stream an asset value. */
 std::ostream& operator<<(std::ostream& os, const Asset& asset) {
     os << asset.to_string();
     return os;

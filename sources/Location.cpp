@@ -35,33 +35,28 @@ Location::Location(const std::string& locationId,
                    const std::string& address)
     : locationId(locationId), name(name), parentLocationId(parentLocationId), address(address) {}
 
-/** @brief Get the location identifier. */
 std::string Location::getLocationId() const { return locationId; }
 
-/** @brief Get the location name. */
 std::string Location::getName() const { return name; }
 
-/** @brief Get the parent location identifier. */
 std::string Location::getParentLocationId() const { return parentLocationId; }
 
-/** @brief Get the address text. */
 std::string Location::getAddress() const { return address; }
 
-/** @brief Set the location identifier. */
 void Location::setLocationId(const std::string& locationId) { this->locationId = locationId; }
 
-/** @brief Set the location name. */
 void Location::setName(const std::string& name) { this->name = name; }
 
-/** @brief Set the parent location identifier. */
 void Location::setParentLocationId(const std::string& parentLocationId) {
     this->parentLocationId = parentLocationId;
 }
 
-/** @brief Set the address text. */
 void Location::setAddress(const std::string& address) { this->address = address; }
 
-/** @brief Convert this location to a human-readable string. */
+/**
+ * @brief Produce a deterministic key/value snapshot of the location state.
+ * @details Intended for diagnostics rather than end-user presentation.
+ */
 std::string Location::to_string() const {
     return "locationId=" + locationId +
            "; name=" + name +
@@ -69,7 +64,9 @@ std::string Location::to_string() const {
            "; address=" + address;
 }
 
-/** @brief Compare two location values. */
+/**
+ * @brief Compare two locations for strict field-by-field equality.
+ */
 bool Location::operator==(const Location& other) const {
     return locationId == other.locationId &&
            name == other.name &&
@@ -77,7 +74,6 @@ bool Location::operator==(const Location& other) const {
            address == other.address;
 }
 
-/** @brief Stream a location value. */
 std::ostream& operator<<(std::ostream& os, const Location& location) {
     os << location.to_string();
     return os;

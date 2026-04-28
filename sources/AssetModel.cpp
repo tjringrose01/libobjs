@@ -41,39 +41,32 @@ AssetModel::AssetModel(const std::string& modelId,
       assetType(assetType),
       defaultWarrantyMonths(defaultWarrantyMonths) {}
 
-/** @brief Get the model identifier. */
 std::string AssetModel::getModelId() const { return modelId; }
 
-/** @brief Get the manufacturer. */
 std::string AssetModel::getManufacturer() const { return manufacturer; }
 
-/** @brief Get the model name. */
 std::string AssetModel::getModelName() const { return modelName; }
 
-/** @brief Get the asset type metadata. */
 AssetType AssetModel::getAssetType() const { return assetType; }
 
-/** @brief Get default warranty months. */
 int AssetModel::getDefaultWarrantyMonths() const { return defaultWarrantyMonths; }
 
-/** @brief Set the model identifier. */
 void AssetModel::setModelId(const std::string& modelId) { this->modelId = modelId; }
 
-/** @brief Set the manufacturer. */
 void AssetModel::setManufacturer(const std::string& manufacturer) { this->manufacturer = manufacturer; }
 
-/** @brief Set the model name. */
 void AssetModel::setModelName(const std::string& modelName) { this->modelName = modelName; }
 
-/** @brief Set the asset type metadata. */
 void AssetModel::setAssetType(const AssetType& assetType) { this->assetType = assetType; }
 
-/** @brief Set default warranty months. */
 void AssetModel::setDefaultWarrantyMonths(int defaultWarrantyMonths) {
     this->defaultWarrantyMonths = defaultWarrantyMonths;
 }
 
-/** @brief Convert this asset model to a human-readable string. */
+/**
+ * @brief Produce a deterministic key/value snapshot of the model state.
+ * @details Intended for diagnostics rather than end-user presentation.
+ */
 std::string AssetModel::to_string() const {
     return "modelId=" + modelId +
            "; manufacturer=" + manufacturer +
@@ -82,7 +75,9 @@ std::string AssetModel::to_string() const {
            "; defaultWarrantyMonths=" + std::to_string(defaultWarrantyMonths);
 }
 
-/** @brief Compare two asset model values. */
+/**
+ * @brief Compare two model entries for strict field-by-field equality.
+ */
 bool AssetModel::operator==(const AssetModel& other) const {
     return modelId == other.modelId &&
            manufacturer == other.manufacturer &&
@@ -91,7 +86,6 @@ bool AssetModel::operator==(const AssetModel& other) const {
            defaultWarrantyMonths == other.defaultWarrantyMonths;
 }
 
-/** @brief Stream an asset model value. */
 std::ostream& operator<<(std::ostream& os, const AssetModel& assetModel) {
     os << assetModel.to_string();
     return os;
